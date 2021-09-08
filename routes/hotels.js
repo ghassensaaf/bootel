@@ -8,12 +8,16 @@ var api_url ='';
 var searchCode='';
 var api_url_filtred='';
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    api_url ='https://api.voyages2000.com.tn/hotels/availability?'+'cityId='+req.query.cityId+'&checkin='+req.query.checkIn+'&checkout='+req.query.checkOut+'&pax='+req.query.pax;
+router.get('/', function(req, res, next) {  
+    cityId=req.query.cityId;
+    checkIn=req.query.checkIn;
+    checkOut=req.query.checkOut;
+    pax=req.query.pax;
     console.log(api_url);
     res.render('hotels', { title: 'Bootel | Hotels Search Results',layout :'layouts/main',cities:cities});
 });
 router.get('/api/Search',function(req, res) {  
+    api_url ='https://api.voyages2000.com.tn/hotels/availability?'+'cityId='+cityId+'&checkin='+checkIn+'&checkout='+checkOut+'&pax='+pax;
     fetch(api_url, settings)
     .then(res => res.json())
     .then((json) => {
