@@ -1,0 +1,240 @@
+<div class="p-5 mb-4 text-white bg-dark rounded-3 border">
+    <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold mb-5">Search for hotels</h1>
+    <form action="/hotels" method="get">
+            <div class="form-row row">
+            <div class="col">
+                <input list="cities" name="cityId" class="form-control" placeholder="ville" value="" required>
+            </div>
+            <datalist id="cities">
+                {{#each cities}}
+                    <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </datalist>
+                <div class="col">
+                    <input id="checkIn" type="date" name="checkIn" class="form-control" value="" required>
+                </div>
+                <div class="col">
+                    <input id="checkOut" type="date" name="checkOut" class="form-control"  required>
+                </div>
+                <div class="col">
+                    <select name="pax" id="" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-light form-control" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-3 mb-4">
+      <!-- Section: Sidebar -->
+    <section id="sidebar" class="mb-3" >
+        <!-- Section: Filters -->
+        <section class="p-3" id="filters">
+            <h5>Filters</h5>
+            <!-- Section: Price  -->
+            <section id="price-filter" class="mb-4"></section>
+            <!-- Section: Price  -->
+
+            <!-- Section: rating -->
+            <section class="mb-4">
+              <h6 class="font-weight-bold mb-3">Rating</h6>
+                  <div id="rating-filter"></div>
+            </section>
+            <!-- Section: rating -->
+
+            <!-- Section: Boards -->
+            <section class="mb-4">
+              <h6 class="font-weight-bold mb-3">Boards</h6>
+              <div id="board-filter"></div>
+            </section>
+            <!-- Section: Boards -->
+
+            <!-- Section: Themes -->
+            <section class="mb-4">
+              <h6 class="font-weight-bold mb-3">Themes</h6>
+              <div id="theme-filter"></div>
+            </section>
+            <!-- Section: Themes -->
+        </section>
+        <!-- Section: Filters -->
+
+    </section>
+  <!-- Section: Sidebar -->
+  </div>
+  <div class="col-md-9 mb-4">
+    <!-- Section: Products  -->
+    <section class="mb-3">
+      <!-- Sorting -->
+      <section class="mb-3">
+        <div class="row d-flex justify-content-around align-items-center"> 
+              <div class="col-12 col-md-4 offset-8">
+                <div class="d-flex flex-wrap">
+                  
+                  <div class="select-outline position-relative w-100">
+                    <select id="sort" class="mdb-select md-form md-outline form-control">
+                      <option value="1">Best rating</option>
+                      <option value="2">Lowest price first</option>
+                      <option value="3">Highest price first</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </section>
+      <!-- Sorting -->
+      <!-- hotels -->
+      <section>
+        <!-- Loader -->
+        {{!-- <div id="loader" class="loader-overlay">
+          <div class="preloader-wrapper active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div> --}}
+        <!-- Loader -->
+
+        <!-- Grid row -->
+        <div class="" id="products"></div>
+        <!-- Grid row -->
+      </section>
+    </section>
+    <!-- Section: Products  -->
+  </div>
+
+  
+
+  
+</div>
+<script>          
+  function hotelTemplate(hotel) {
+    return `
+      <div class="card mb-3 shadow-sm" >
+        <div class="row no-gutters">
+          <div class="col-4">
+            <img src="${hotel.photos[0]}" class="card-img" alt="...">
+          </div>
+          <div class="col-5">
+            <div class="card-body">
+              <h5 class="card-title">${hotel.name}</h5>
+              <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}, ${hotel.city} ${hotel.country}</p>
+              <hr>
+              <p class="card-text text-success">${hotel.marketingText}</p>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card-body">
+              <h5 class="">à partir de ${hotel.minRate} ${hotel.currency}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  function filtersPriceTemplate(filters){
+    return `
+      <h6 class="font-weight-bold mb-3">Price</h6>
+      <div class="slider-price d-flex align-items-center my-4">
+        <span class="font-weight-normal small text-muted mr-2">${filters.minRate}</span>
+        <form class="multi-range-field w-100 mb-1">
+          <input type="range" id="price-range" class="multi-range" min="${filters.minRate}" max="${filters.maxRate}" step="0.01" />
+        </form>
+        <span class="font-weight-normal small text-muted ml-2">${filters.maxRate}</span>
+      </div>
+    `;
+  }
+  function filtersRatingTemplate(rating){
+    return `
+      <div class="form-check pl-0 mb-3">
+        <input value="${rating.code}" type="checkbox" class="form-check-input filled-in">
+        <label class="form-check-label small text-uppercase card-link-secondary">${rating.name}</label>
+      </div>
+    `;
+  }
+  function filtersBoardTemplate(board){
+    return `
+      <div class="form-check pl-0 mb-3">
+        <input value="${board.code}" type="checkbox" class="form-check-input filled-in">
+        <label class="form-check-label small text-uppercase card-link-secondary">${board.name}</label>
+      </div>
+    `;
+  }
+  function filtersThemeTemplate(theme){
+    return `
+      <div class="form-check pl-0 mb-3">
+        <input value="${theme.code}" type="checkbox" class="form-check-input filled-in">
+        <label class="form-check-label small text-uppercase card-link-secondary">${theme.name}</label>
+      </div>
+    `;
+  }
+  function renderFilters(filters){
+    console.log(filters);
+    const pricetemplate = filtersPriceTemplate(filters);
+    const ratingtemplate = filters.ratings.length === 0 ? `<p>No matching results found.</p>` : filters.ratings.map((filter) => filtersRatingTemplate(filter)).join("\n");
+    const boardtemplate = filters.boards.length === 0 ? `<p>No matching results found.</p>` : filters.boards.map((filter) => filtersBoardTemplate(filter)).join("\n");
+    const themetemplate = filters.themes.length === 0 ? `<p>No matching results found.</p>` : filters.themes.map((filter) => filtersThemeTemplate(filter)).join("\n");
+    $("#price-filter").html(pricetemplate);
+    $("#rating-filter").html(ratingtemplate);
+    $("#board-filter").html(boardtemplate);
+    $("#theme-filter").html(themetemplate);
+  }
+  function renderHotels(hotels) {
+    console.log(hotels);
+    const template =
+    hotels.length === 0 ? `
+    <p>No matching results found.</p>
+    ` : hotels.map((hotel) => hotelTemplate(hotel)).join("\n");
+    $("#products").html(template);
+  }
+  function getHotels() {
+    $.get(
+      'hotels/api/Search',
+      (json) => {
+        renderHotels(json.hotels);
+        $.get(
+          'hotels/api/Filter',
+          (json) => {
+            renderFilters(json);
+          }
+        )
+        .fail(() => {
+          renderFilters([])
+        })
+      }
+    )
+    .fail(() => {
+      renderhotels([])
+    })
+  }
+
+  function getFilters() {
+    $.get(
+      'hotels/api/Filers',
+      (json) => {
+        renderFilters(json);
+      }
+    )
+    .fail(() => {
+      renderFilters([])
+    })
+  }
+
+  getHotels();
+</script>
+
+
