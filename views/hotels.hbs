@@ -1,37 +1,9 @@
-<div class="p-5 mb-4 text-white bg-dark rounded-3 border">
-    <div class="container-fluid py-5">
-    <h1 class="display-5 fw-bold mb-5">Search for hotels</h1>
-    <form action="/hotels" method="get">
-            <div class="form-row row">
-            <div class="col">
-                <input list="cities" name="cityId" class="form-control" placeholder="ville" value="" required>
-            </div>
-            <datalist id="cities">
-                {{#each cities}}
-                    <option value="{{this.id}}">{{this.name}}</option>
-                {{/each}}
-            </datalist>
-                <div class="col">
-                    <input id="checkIn" type="date" name="checkIn" class="form-control" value="" required>
-                </div>
-                <div class="col">
-                    <input id="checkOut" type="date" name="checkOut" class="form-control"  required>
-                </div>
-                <div class="col">
-                    <select name="pax" id="" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <button class="btn btn-outline-light form-control" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<!-- Section: Search engine -->
+<div class="container">
+  {{>searchForm}}
 </div>
-<div class="row">
+<!-- Section: Search engine -->
+<div class="row mt-5">
   <div class="col-md-3 mb-4">
       <!-- Section: Sidebar -->
     <section id="sidebar" class="mb-3" >
@@ -41,21 +13,18 @@
             <!-- Section: Price  -->
             <section id="price-filter" class="mb-4"></section>
             <!-- Section: Price  -->
-
             <!-- Section: rating -->
             <section class="mb-4">
               <h6 class="font-weight-bold mb-3">Rating</h6>
                   <div id="rating-filter"></div>
             </section>
             <!-- Section: rating -->
-
             <!-- Section: Boards -->
             <section class="mb-4">
               <h6 class="font-weight-bold mb-3">Boards</h6>
               <div id="board-filter"></div>
             </section>
             <!-- Section: Boards -->
-
             <!-- Section: Themes -->
             <section class="mb-4">
               <h6 class="font-weight-bold mb-3">Themes</h6>
@@ -64,7 +33,6 @@
             <!-- Section: Themes -->
         </section>
         <!-- Section: Filters -->
-
     </section>
   <!-- Section: Sidebar -->
   </div>
@@ -76,12 +44,15 @@
         <div class="row d-flex justify-content-around align-items-center"> 
               <div class="col-12 col-md-4 offset-8">
                 <div class="d-flex flex-wrap">
-                  
                   <div class="select-outline position-relative w-100">
-                    <select id="sort" class="mdb-select md-form md-outline form-control">
-                      <option value="1">Best rating</option>
-                      <option value="2">Lowest price first</option>
-                      <option value="3">Highest price first</option>
+                    <select id="sort-select" class="mdb-select md-form md-outline form-select update border-dark">
+                      <option value="score:asc">Hotels recommendés</option>
+                      <option value="price:asc">moin cher au plus cher</option>
+                      <option value="price:desc">plus cher au moins cher</option>
+                      <option value="name:asc">Nom hotel(A à Z)</option>
+                      <option value="name:desc">Nom hotel(Z à A)</option>
+                      <option value="rating:asc">Nombre d'étoiles(bas en haut)</option>
+                      <option value="rating:desc">Nombre d'étoiles(haut en bas)</option>
                     </select>
                   </div>
                 </div>
@@ -108,9 +79,11 @@
           </div>
         </div> --}}
         <!-- Loader -->
-
         <!-- Grid row -->
         <div class="" id="products"></div>
+        <div>
+          <button class="btn btn-outline-info" id="show-more">Show More</button>
+        </div>
         <!-- Grid row -->
       </section>
     </section>
@@ -123,6 +96,14 @@
 </div>
 <script>
   function hotelTemplate(hotel) {
+    stars=hotel.rating;
+    rating=``;
+    for (var i =1; i<=hotel.rating;  i++ ) { 
+        rating+=`<i style="color: #FF9529;" class="fas fa-star"></i>`;
+    } 
+    for (var i =5; i>hotel.rating;  i-- ) { 
+        rating+=`<i style="color: #FF9529;" class="far fa-star"></i>`;
+    }
     return `{{> hotel}}`;
   }
   function filtersPriceTemplate(filters){
@@ -139,8 +120,10 @@
   }
 </script>
 <script src="javascripts/searchResults.js"></script>
+<script src="javascripts/filters.js"></script>
 <script>          
   getHotels();
 </script>
+
 
 

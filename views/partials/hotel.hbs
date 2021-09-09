@@ -5,15 +5,17 @@
         </div>
         <div class="col-5">
         <div class="card-body">
+
             <h5 class="card-title">${hotel.name}</h5>
-            <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}, ${hotel.city} ${hotel.country}</p>
+            <p class="h-rating">${rating}</p>
+            <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}</p>
             <hr>
             <p class="card-text text-success">${hotel.marketingText}</p>
         </div>
         </div>
         <div class="col-3">
-        <div class="card-body">
-            <h5 class="">à partir de ${hotel.minRate} ${hotel.currency}</h5>
+        <div class="card-side card-body">
+            <h5 class="card-price">à partir de ${hotel.minRate} ${hotel.currency}</h5>
         </div>
         </div>
     </div>

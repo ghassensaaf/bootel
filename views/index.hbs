@@ -1,34 +1,7 @@
 <div class="p-5 mb-4 text-white bg-dark rounded-3 border">
     <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold mb-5">Search for hotels</h1>
-    <form action="/hotels" method="get">
-            <div class="form-row row">
-            <div class="col">
-                <input list="cities" name="cityId" class="form-control" placeholder="ville" required>
-            </div>
-            <datalist id="cities">
-                {{#each cities}}
-                    <option value="{{this.id}}">{{this.name}}</option>
-                {{/each}}
-            </datalist>
-                <div class="col">
-                    <input id="checkIn" type="date" name="checkIn" class="form-control" value="" required>
-                </div>
-                <div class="col">
-                    <input id="checkOut" type="date" name="checkOut" class="form-control"  required>
-                </div>
-                <div class="col">
-                    <select name="pax" id="" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <button class="btn btn-outline-light form-control" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
+    {{>searchForm}}
     </div>
 </div>
 
@@ -48,6 +21,7 @@
     </div>
     </div>
 </div>
+
 <script>
     var today = new Date();
     var trw=new Date();
@@ -62,6 +36,10 @@
     trw = yyyyt + '-' + mmt + '-' + ddt;
     $('#checkIn').val(today);
     $('#checkOut').val(trw);
+</script>
+
+<script>
+    
 </script>
 
 

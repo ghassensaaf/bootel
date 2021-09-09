@@ -17,25 +17,57 @@ function renderHotels(hotels) {
   ` : hotels.map((hotel) => hotelTemplate(hotel)).join("\n");
   $("#products").html(template);
 }
+function showMoreHotels(hotels) {
+  console.log(hotels);
+  const template =
+  hotels.length === 0 ? `
+  <p>No matching results found.</p>
+  ` : hotels.map((hotel) => hotelTemplate(hotel)).join("\n");
+  $("#products").append(template);
+}
+var parseQueryString = function() {
+
+  var str = window.location.search;
+  var objURL = {};
+
+  str.replace(
+      new RegExp( "([^?=&]+)(=([^&]*))?", "g" ),
+      function( $0, $1, $2, $3 ){
+          objURL[ $1 ] = $3;
+      }
+  );
+  return objURL;
+};
 function getHotels() {
+  var params = parseQueryString();
+  if(params.hotelId==='')
+  {
+    params.hotelId='x';
+  }
+  var url ='hotels/api/Search/'+params.cityId+'/'+params.checkIn+'/'+params.checkOut+'/'+params.pax+'/'+params.hotelId;
+  console.log(params);
   $.get(
-    'hotels/api/Search',
+    url,
     (json) => {
       renderHotels(json.hotels);
+      searchCode=json.searchCode;
+      total=json.total;
+      filterUrl='hotels/api/Filter/'+searchCode;
       $.get(
-        'hotels/api/Filter',
+        filterUrl,
         (json) => {
           renderFilters(json);
+          filter(searchCode,total);
         }
       )
       .fail(() => {
-        renderFilters([])
-      })
+        renderFilters([]);
+      });
     }
   )
   .fail(() => {
-    renderhotels([])
-  })
+    renderhotels([]);
+  });
 }
 
 function getFilters() {
@@ -46,6 +78,6 @@ function getFilters() {
     }
   )
   .fail(() => {
-    renderFilters([])
-  })
+    renderFilters([]);
+  });
 }

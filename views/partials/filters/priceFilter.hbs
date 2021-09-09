@@ -2,7 +2,8 @@
     <div class="slider-price d-flex align-items-center my-4">
     <span class="font-weight-normal small text-muted mr-2">${filters.minRate}</span>
     <form class="multi-range-field w-100 mb-1">
-        <input type="range" id="price-range" class="multi-range" min="${filters.minRate}" max="${filters.maxRate}" step="0.01" />
+        <label for="price-range"><span id="output"></span></label>
+        <input type="range" id="price-range" class="multi-range update" min="${filters.minRate}" max="${filters.maxRate}" value="${filters.maxRate}" step="0.01" />
     </form>
     <span class="font-weight-normal small text-muted ml-2">${filters.maxRate}</span>
 </div>
