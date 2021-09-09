@@ -4,7 +4,9 @@
 body
 {
   background-color: #f8f5f4;
+  
 }
+
 
 /* ----------------------------------------------------------------------------- */
 /* ------------------------filters side Bar--------------------------------------- */
@@ -23,9 +25,12 @@ body
 .card 
 {
   max-height:350px;
+  border-radius: 1.5rem;
 }
 .card-img{
   object-fit: cover; height:100%; max-height:348px;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
 }
 .h-adress{
   color: #0b7b99;
@@ -71,16 +76,20 @@ body
 }
 
 .tt-hint {
-  color: #999
+  color: #999;
+  font-size: 1.25rem ;
+  padding: .5rem 1rem;
+  border-radius: .3rem;
 }
 
 .tt-suggestion {
   padding: 8px 20px;
   color: black;
+  border-radius: .6rem;
 }
 .tt-suggestion:hover
 {
-  background-color: #0097cf;
+  background-color: #0a97ca2f;
 }
 
 .tt-suggestion.tt-cursor {
@@ -104,19 +113,18 @@ body
   border-bottom: 1px solid #ccc;
 }
 .tt-menu{
-  width: 200%;
+  width: 100%;
   background-color: white;
-  border-radius: 0.25rem;
+  border-bottom-left-radius: .75rem;
+  border-bottom-right-radius: .75rem;
+  box-shadow: black;
 }
 #typeaheadsearch{
-  font-size: 1.25rem !important;
+  font-size: 1.25rem ;
+  padding: .5rem 1rem;
+  border-radius: .3rem;
 }
 /* ----------------------------------------------------------------------------- */
 /* ------------------------------Media queries--------------------------------- */
 /* ----------------------------------------------------------------------------- */
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}

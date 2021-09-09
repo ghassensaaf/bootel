@@ -1,25 +1,35 @@
 <form action="/hotels" name="searchForm" id="searchForm" method="get">
             <div class="form-row row ">
-                <div id="multiple-datasets" class="col input-group input-group-lg">
-                    <input id="typeaheadsearch" type="text" name="" class="form-control typeahead border-dark" placeholder="Villes & Hotels" required>
+                <div class="col-md-4 col-sm-8 col-sm-offset-2 mb-2">
+                    <div id="multiple-datasets" class="input-group input-group-lg">
+                        <input id="typeaheadsearch" type="text" name="" class="form-control typeahead border-dark" placeholder="Villes & Hotels" required>
+                    </div>
                 </div>
-                <div class="col input-group input-group-lg">
-                    <input id="checkIn" type="date" name="checkIn" class="form-control border-dark" value="" required>
+                <div class="col-md-2 col-sm-5 col-sm-offset-1 mb-2 ">
+                    <div class="input-group input-group-lg">
+                        <input id="checkIn" type="date" name="checkIn" class="form-control border-dark" value="" required>
+                    </div>
                 </div>
-                <div class="col input-group input-group-lg">
-                    <input id="checkOut" type="date" name="checkOut" class="form-control border-dark"  required>
+                <div class="col-md-2 col-sm-5 mb-2">
+                    <div class="input-group input-group-lg">
+                        <input id="checkOut" type="date" name="checkOut" class="form-control border-dark"  required>
+                    </div>
                 </div>
-                <div class="col input-group input-group-lg">
-                    <select name="pax" id="" class="form-control border-dark">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
+                <div class="col-md-2 col-sm-8 col-sm-offset-2 mb-2">
+                    <div class=" input-group input-group-lg">
+                        <select name="pax" id="" class="form-control border-dark">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
                 </div>
                 <input type="hidden" name="cityId" id="cityId">
                 <input type="hidden" name="hotelId" id="hotelId">
-                <div class="col">
-                    <button class="btn btn-lg btn-outline-dark bg-white form-control" type="submit">Search</button>
+                <div class="col-md-2 col-sm-6 col-sm-offset-3 mb-2">
+                    <div >
+                        <button class="btn btn-lg btn-outline-dark bg-white form-control" type="submit">Search</button>
+                    </div>
                 </div>
             </div>
     </form>
