@@ -27,7 +27,7 @@ function showMoreHotels(hotels) {
 }
 var parseQueryString = function() {
 
-  var str = window.location.search;
+  var str = decodeURIComponent(window.location.search);
   var objURL = {};
 
   str.replace(
@@ -52,6 +52,7 @@ function getHotels() {
       renderHotels(json.hotels);
       searchCode=json.searchCode;
       total=json.total;
+      $('#resultCount').val(total + ' Hotels à '+json.hotels[0].city);
       filterUrl='hotels/api/Filter/'+searchCode;
       $.get(
         filterUrl,

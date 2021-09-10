@@ -5,31 +5,94 @@
                         <input id="typeaheadsearch" type="text" name="" class="form-control typeahead border-dark" placeholder="Villes & Hotels" required>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-5 col-sm-offset-1 mb-2 ">
+                <div class="col-md-4 col-sm-8 col-sm-offset-2 mb-2 ">
                     <div class="input-group input-group-lg">
-                        <input id="checkIn" type="date" name="checkIn" class="form-control border-dark" value="" required>
+                        <input id="dateRange" type="" name="" class="form-control border-dark" value="" required>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-5 mb-2">
-                    <div class="input-group input-group-lg">
-                        <input id="checkOut" type="date" name="checkOut" class="form-control border-dark"  required>
+                <div class="col-md-4 col-sm-8 col-sm-offset-2 mb-2">
+                    <div class="dropdown">
+                        <button class="travelers-btn white-btn btn btn-lg btn-outline-dark bg-white dropdown-toggle form-control" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+                            <div class="alert alert-danger" role="alert"></div>
+                            <div class="rooms">
+                                <div class="room r1">
+                                    <h6>room 1</h6>
+                                    <label for="adultes">adultes</label>
+                                    <input class="adultes a-r1 form-control" type="number" id="adultesR1" value="2" max="6" min="1">
+                                    <label for="childrenR1">children</label>
+                                    <input class="children ch-r1 form-control" type="number" name="" id="childrenR1" value="0" max="3" min="0">
+                                    <div class="ch-age row"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2 col-sm-8 col-sm-offset-2 mb-2">
-                    <div class=" input-group input-group-lg">
-                        <select name="pax" id="" class="form-control border-dark">
-                            <option value="1">1</option>
-                            <option value="2" selected>2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                </div>
+                
                 <input type="hidden" name="cityId" id="cityId">
                 <input type="hidden" name="hotelId" id="hotelId">
-                <div class="col-md-2 col-sm-6 col-sm-offset-3 mb-2">
+                <input type="hidden" name="checkIn" id="checkIn">
+                <input type="hidden" name="checkOut" id="checkOut">
+                <input type="hidden" name="pax" id="pax">
+                
+            </div>
+            <div class="col-md-2 col-sm-6 col-sm-offset-3 mb-2">
                     <div >
-                        <button class="btn btn-lg btn-outline-dark bg-white form-control" type="submit">Search</button>
+                        <button class="white-btn btn btn-lg btn-outline-dark bg-white form-control" type="submit">Search</button>
                     </div>
-                </div>
             </div>
     </form>
+    <script>
+        
+        $(document).ready(function(){
+            $('.travelers-btn').html('1 room 2 travelers');
+            var pax= '2'
+            var travelers=2;
+            $('#pax').val(pax);
+            $('.adultes, .children').on('change', '', function() {
+                var age=``;
+                var chA='';
+                for(let i=0;i<$('#childrenR1').val();i++){   
+                    age+='\n'+`<select name="" id="r1-ch${i+1}" class="col mx-1 mt-2 form-control">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>`;
+                }
+                $('.ch-age').html(age);
+                for(let i =0;i<$('#childrenR1').val();i++)
+                {
+                    let chn=i+1;
+                    chA+=','+$('#r1-ch'+chn).val();
+                }
+                pax= $('.a-r1').val()+chA;
+                console.log(pax);
+                $('#pax').val(pax);
+                travelers=0+parseInt($('.a-r1').val())+parseInt($('.ch-r1').val());
+                $('.travelers-btn').html('1 room '+travelers+' travelers');
+            });
+            $('.ch-age').on('change', '', function() {
+                var age=``;
+                var chA='';
+                for(let i =0;i<$('#childrenR1').val();i++)
+                {
+                    let chn=i+1;
+                    chA+=','+$('#r1-ch'+chn).val();
+                }
+                pax= $('.a-r1').val()+chA;
+                console.log(pax);
+                $('#pax').val(pax);
+            });
+
+        });
+    </script>

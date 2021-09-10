@@ -1,22 +1,51 @@
-<div class="card mb-3 shadow-sm" >
+<div class="card mt-3 shadow-sm hotel" >
     <div class="row no-gutters">
         <div class="col-4">
         <img src="${hotel.photos[0]}" class="card-img" alt="...">
         </div>
         <div class="col-5">
-        <div class="card-body">
+            <div class="card-body">
 
-            <h5 class="card-title">${hotel.name}</h5>
-            <p class="h-rating">${rating}</p>
-            <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}</p>
-            <hr>
-            <p class="card-text text-success">${hotel.marketingText}</p>
-        </div>
+                <h5 class="card-title">${hotel.name}</h5>
+                <p class="h-rating">${rating}</p>
+                <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}</p>
+                <hr>
+                <p class="card-text text-success">${hotel.marketingText}</p>
+            </div>
         </div>
         <div class="col-3">
         <div class="card-side card-body">
             <h5 class="card-price">à partir de ${hotel.minRate} ${hotel.currency}</h5>
         </div>
         </div>
+    </div>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col card-body">
+                <h5 class=""><i class="fas fa-concierge-bell"></i> Choisissez votre chambre et formule</h5>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-2">
+                <input type="radio" class="btn-check " name="${hotel.hotelId}room-type" id="${hotel.hotelId}all"  autocomplete="off" checked>
+                <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}all"> <small>All</small> </label><br>
+            </div>
+            <div class="col-2">
+                <input type="radio" class="btn-check " name="${hotel.hotelId}room-type" id="${hotel.hotelId}demip" autocomplete="off">
+                <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}demip"> <small>Demi P.</small> </label>
+            </div>
+            <div class="col-2">
+                <input type="radio" class="btn-check " name="${hotel.hotelId}room-type" id="${hotel.hotelId}pcom" autocomplete="off">
+                <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}pcom"> <small>P. Complete</small> </label>
+            </div>
+            <div class="col-2">
+                <input type="radio" class="btn-check " name="${hotel.hotelId}room-type" id="${hotel.hotelId}allinc" autocomplete="off">
+                <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}allinc"> <small>All Inclusive</small> </label>
+            </div>
+        </div>
+        <div class="rooms">
+            ${rooms}
+        </div>
+        
     </div>
 </div> 

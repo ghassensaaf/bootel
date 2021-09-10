@@ -41,22 +41,25 @@
     <section class="mb-3">
       <!-- Sorting -->
       <section class="mb-3">
-        <div class="row d-flex justify-content-around align-items-center"> 
-              <div class="col-12 col-md-4 offset-8">
-                <div class="d-flex flex-wrap">
-                  <div class="select-outline position-relative w-100">
-                    <select id="sort-select" class="mdb-select md-form md-outline form-select update border-dark">
-                      <option value="score:asc">Hotels recommendés</option>
-                      <option value="price:asc">moin cher au plus cher</option>
-                      <option value="price:desc">plus cher au moins cher</option>
-                      <option value="name:asc">Nom hotel(A à Z)</option>
-                      <option value="name:desc">Nom hotel(Z à A)</option>
-                      <option value="rating:asc">Nombre d'étoiles(bas en haut)</option>
-                      <option value="rating:desc">Nombre d'étoiles(haut en bas)</option>
-                    </select>
-                  </div>
-                </div>
+        <div class="row d-flex"> 
+          <div class="col-md-4 col-sm-12 ">
+            <input type="text" name="" id="resultCount" class=" md-form md-outline form-control bg-white update border-dark " disabled readonly>
+          </div>
+          <div class="col-md-4 col-sm-12 offset-md-4">
+            <div class="d-flex flex-wrap">
+              <div class="select-outline position-relative w-100">
+                <select id="sort-select" class="mdb-select md-form md-outline form-select update border-dark">
+                  <option value="score:asc">Hotels recommendés</option>
+                  <option value="price:asc">moin cher au plus cher</option>
+                  <option value="price:desc">plus cher au moins cher</option>
+                  <option value="name:asc">Nom hotel(A à Z)</option>
+                  <option value="name:desc">Nom hotel(Z à A)</option>
+                  <option value="rating:asc">Nombre d'étoiles(bas en haut)</option>
+                  <option value="rating:desc">Nombre d'étoiles(haut en bas)</option>
+                </select>
               </div>
+            </div>
+          </div>
         </div>
       </section>
       <!-- Sorting -->
@@ -96,6 +99,39 @@
 </div>
 <script>
   function hotelTemplate(hotel) {
+    rooms=``;
+    $.each(hotel.rooms, function(index, room) {
+      $.each(room.rates, function(index, rate) {
+        oldRate=''
+        if(typeof(rate.amountWithoutPromotion) !=='undefined')
+        {
+          oldRate=rate.amountWithoutPromotion + ' TND'
+        }
+        rooms+=`<div class="row py-3 mt-3 rounded border room-card">
+                  <div class="col-5">
+                      <h6>1x ${room.name}</h6>
+                      <p class="fs-6 text-muted"><i class="fas fa-users"></i> 2 adultes , 1 enfant</p>
+                      <p><a href="">Details chambre</a></p>
+                  </div>
+                  <div class="col-3">
+                      <p class="text-success fw-bold"><small>annulation gratuite avant le  ${rate.cancellationPolicies[0].from}</small></p>
+                      <p class="text-danger">Non remboursable</p>
+                      <p class="fs-6 text-secondary">Min ${rate.minStay} nuitées</p>
+                  </div>
+                  <div class="col">
+                      <p>${rate.boardName}</p>
+                      <h6 class="text-decoration-line-through">${oldRate}</h6>
+                      <h6>${rate.amount} DT</h6>
+                      <p>prix total 2 nuitées</p>
+                  </div>
+                  <div class="col">
+                      <input type="checkbox" name="" id=""> Selectinnez
+                      <p>Reste 3 chambres</p>
+                  </div>
+                </div>`
+        });
+      
+    });
     stars=hotel.rating;
     rating=``;
     for (var i =1; i<=hotel.rating;  i++ ) { 

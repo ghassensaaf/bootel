@@ -5,4 +5,55 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/bloodhound.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script src="javascripts/searchForm.js"></script>
+<script src="javascripts/searchResults.js"></script>
+<script>
+    var params = parseQueryString();
+    if(typeof params.checkIn !== 'undefined' && typeof params.checkOut !== 'undefined' && typeof params.cityId !== 'undefined'){
+        $('#checkIn').val(params.checkIn);
+        $('#checkOut').val(params.checkOut);
+        start=params.checkIn.substr(5,2)+'/'+params.checkIn.substr(8,2)+'/'+params.checkIn.substr(0,4);
+        end=params.checkOut.substr(5,2)+'/'+params.checkOut.substr(8,2)+'/'+params.checkOut.substr(0,4);
+        $.get(
+        '/data/cities.json',
+        (json) => {
+            $.each(json, function( index, obj ) {
+                if(obj.id==params.cityId){
+                    $("#typeaheadsearch").val(obj.name);
+                    $("#cityId").val(obj.id);
+                }
+            });
+        }
+  )
+  .fail(() => {
+    renderFilters([]);
+  });
+    }
+    else{
+        today = new Date();
+        trw=new Date();
+        trw.setDate(today.getDate()+1);
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        var ddt = String(trw.getDate()).padStart(2, '0');
+        var mmt = String(trw.getMonth() + 1).padStart(2, '0');
+        var yyyyt = trw.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        trw = yyyyt + '-' + mmt + '-' + ddt;
+        $('#checkIn').val(today);
+        $('#checkOut').val(trw);
+        start = mm + '/' + dd + '/' + yyyy;
+        end = mmt + '/' + ddt + '/' + yyyyt;
+    }
+    $('#dateRange').daterangepicker({
+    "startDate": start,
+    "endDate": end
+    }, function(start, end, label) {
+        $('#checkIn').val(start.format('YYYY-MM-DD'));
+        $('#checkOut').val(end.format('YYYY-MM-DD'));
+    });
+</script>
