@@ -103,6 +103,11 @@
     $.each(hotel.rooms, function(index, room) {
       $.each(room.rates, function(index, rate) {
         oldRate=''
+        minCancelDate=''
+        if(typeof(rate.cancellationPolicies[0])!=='undefined')
+        {
+          minCancelDate='annulation gratuite avant le  '+rate.cancellationPolicies[0].from;
+        }
         if(typeof(rate.amountWithoutPromotion) !=='undefined')
         {
           oldRate=rate.amountWithoutPromotion + ' TND'
@@ -114,7 +119,7 @@
                       <p><a href="">Details chambre</a></p>
                   </div>
                   <div class="col-3">
-                      <p class="text-success fw-bold"><small>annulation gratuite avant le  ${rate.cancellationPolicies[0].from}</small></p>
+                      <p class="text-success fw-bold"><small>${minCancelDate}</small></p>
                       <p class="text-danger">Non remboursable</p>
                       <p class="fs-6 text-secondary">Min ${rate.minStay} nuitées</p>
                   </div>
