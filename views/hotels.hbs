@@ -112,7 +112,7 @@
         {
           oldRate=rate.amountWithoutPromotion + ' TND'
         }
-        rooms+=`<div class="row py-3 mt-3 rounded border room-card">
+        rooms+=`<div class="row py-3 mt-3 rounded border room-card room-${hotel.hotelId}"  data-group="${rate.boardCode}">
                   <div class="col-5">
                       <h6>1x ${room.name}</h6>
                       <p class="fs-6 text-muted"><i class="fas fa-users"></i> 2 adultes , 1 enfant</p>

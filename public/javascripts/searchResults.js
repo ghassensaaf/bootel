@@ -52,6 +52,7 @@ function getHotels() {
       renderHotels(json.hotels);
       searchCode=json.searchCode;
       total=json.total;
+      filterRooms();
       $('#resultCount').val(total + ' Hotels à '+json.hotels[0].city);
       filterUrl='hotels/api/Filter/'+searchCode;
       $.get(
@@ -59,6 +60,7 @@ function getHotels() {
         (json) => {
           renderFilters(json);
           filter(searchCode,total);
+          filterRooms();
         }
       )
       .fail(() => {
@@ -71,14 +73,3 @@ function getHotels() {
   });
 }
 
-function getFilters() {
-  $.get(
-    'hotels/api/Filers',
-    (json) => {
-      renderFilters(json);
-    }
-  )
-  .fail(() => {
-    renderFilters([]);
-  });
-}
