@@ -145,7 +145,7 @@
     console.log(roomTypes);
     $.each(roomTypes, function(index, type) {
       roomFilters+=`
-                    <div class="col-2">
+                    <div class="col">
                       <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-${type.id}"  autocomplete="off" data-set="${type.id}" >
                       <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-${type.id}"> <small>${type.board}</small> </label><br>
                     </div>`;
