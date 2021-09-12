@@ -98,8 +98,10 @@ function filterRooms()
       $(hotelRoom+']').show();
       return false;
     }
-    var $currentLists = $(hotelRoom + this.dataset.set + "]");
-    $(hotelRoom+']').not($currentLists).hide();
+    var $currentLists = $(hotelRoom +'='+ this.dataset.set + "]");
+    console.log(hotelRoom+']');
+    console.log($currentLists);
+    testtt=$(hotelRoom+']').not($currentLists).hide();
     $currentLists.show();
   });
 }

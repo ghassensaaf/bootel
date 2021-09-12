@@ -25,23 +25,12 @@
                 <h5 class=""><i class="fas fa-concierge-bell"></i> Choisissez votre chambre et formule</h5>
             </div>
         </div>
-        <div class="row mb-4">
+        <div class="row mb-4 room-filters">
             <div class="col-2">
                 <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-all"  autocomplete="off" data-set="all" checked>
                 <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-all"> <small>All</small> </label><br>
             </div>
-            <div class="col-2">
-                <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-demip" autocomplete="off" data-set="3">
-                <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-demip"> <small>Demi P.</small> </label>
-            </div>
-            <div class="col-2">
-                <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-pcom" autocomplete="off" data-set="4">
-                <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-pcom"> <small>P. Complete</small> </label>
-            </div>
-            <div class="col-2">
-                <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-allinc" autocomplete="off" data-set="7">
-                <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-allinc"> <small>All Inclusive</small> </label>
-            </div>
+            ${roomFilters}
         </div>
         <div class="rooms">
             ${rooms}

@@ -101,7 +101,12 @@
   function hotelTemplate(hotel) {
     rooms=``;
     $.each(hotel.rooms, function(index, room) {
+      roomTypes=[];
+      roomFilters=``;
       $.each(room.rates, function(index, rate) {
+        
+        roomTypes.push({id:rate.boardCode,board:rate.boardName})
+        
         oldRate=''
         minCancelDate=''
         if(typeof(rate.cancellationPolicies[0])!=='undefined')
@@ -136,6 +141,14 @@
                 </div>`
         });
       
+    });
+    console.log(roomTypes);
+    $.each(roomTypes, function(index, type) {
+      roomFilters+=`
+                    <div class="col-2">
+                      <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-${type.id}"  autocomplete="off" data-set="${type.id}" >
+                      <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-${type.id}"> <small>${type.board}</small> </label><br>
+                    </div>`;
     });
     stars=hotel.rating;
     rating=``;
