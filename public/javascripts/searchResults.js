@@ -49,6 +49,9 @@ function getHotels() {
   $.get(
     url,
     (json) => {
+      $(function() {
+        $('.lazy').lazy();
+      });
       renderHotels(json.hotels);
       searchCode=json.searchCode;
       total=json.total;

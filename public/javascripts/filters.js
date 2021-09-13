@@ -35,6 +35,9 @@ function filter(searchCode,total)
             url:'/hotels/api/FiltredRes/'+searchCode+'/'+currentPage+'/'+slider.value+'/'+rating+'/'+board+'/'+theme+'/'+sort,
             data:data3,
             success:function(json){   
+              $(function() {
+                $('.lazy').lazy();
+              });
               renderHotels(json.hotels);
               filterRooms();
               pages=Math.ceil(json.total/10);
@@ -78,6 +81,9 @@ function filter(searchCode,total)
           url:'/hotels/api/FiltredRes/'+searchCode+'/'+currentPage+'/'+slider.value+'/'+rating+'/'+board+'/'+theme+'/'+sort,
           data:data4,
           success:function(json){   
+            $(function() {
+              $('.lazy').lazy();
+            });
             showMoreHotels(json.hotels);
             filterRooms();
           },
@@ -87,8 +93,7 @@ function filter(searchCode,total)
         });
     });
 }
-function filterRooms()
-{
+function filterRooms(){
   $('.room-filter').on('change', '', function() {
     console.log(this.id);
     var hotelID=this.id.substr(0, this.id.indexOf('-'));
@@ -104,4 +109,22 @@ function filterRooms()
     testtt=$(hotelRoom+']').not($currentLists).hide();
     $currentLists.show();
   });
+}
+function showRooms(btn){
+  var hotelID=btn.id.substr(0, btn.id.indexOf('-'));
+  var rooms='#'+hotelID+'-hotelRooms';
+  var pic='#'+hotelID+'-pic';
+  
+  if($(rooms).is(":hidden")){
+    $('#'+btn.id).html("hide rooms")
+    $(pic).css("border-bottom-left-radius", "0");
+  }
+  else
+  {
+    $('#'+btn.id).html("show rooms")
+    $(pic).css("border-bottom-left-radius", "1.5rem");
+  }
+  $(rooms).slideToggle();
+  
+  
 }

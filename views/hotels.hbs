@@ -49,6 +49,7 @@
             <div class="d-flex flex-wrap">
               <div class="select-outline position-relative w-100">
                 <select id="sort-select" class="mdb-select md-form md-outline form-select update border-dark">
+                  <option value="x">Sort</option>
                   <option value="score:asc">Hotels recommendés</option>
                   <option value="price:asc">moin cher au plus cher</option>
                   <option value="price:desc">plus cher au moins cher</option>
@@ -119,9 +120,10 @@
         }
         rooms+=`<div class="row py-3 mt-3 rounded border room-card room-${hotel.hotelId}"  data-group="${rate.boardCode}">
                   <div class="col-5">
+                      <input type="checkbox" name="" id="">
                       <h6>1x ${room.name}</h6>
                       <p class="fs-6 text-muted"><i class="fas fa-users"></i> 2 adultes , 1 enfant</p>
-                      <p><a href="">Details chambre</a></p>
+                      <p><a href="#">Details chambre</a></p>
                   </div>
                   <div class="col-3">
                       <p class="text-success fw-bold"><small>${minCancelDate}</small></p>
@@ -133,10 +135,6 @@
                       <h6 class="text-decoration-line-through">${oldRate}</h6>
                       <h6>${rate.amount} DT</h6>
                       <p>prix total 2 nuitées</p>
-                  </div>
-                  <div class="col">
-                      <input type="checkbox" name="" id=""> Selectinnez
-                      <p>Reste 3 chambres</p>
                   </div>
                 </div>`
         });

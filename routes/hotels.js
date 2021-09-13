@@ -44,12 +44,14 @@ router.get('/api/FiltredRes/:searchCode/:page/:price/:rtn/:brd/:thm/:srt',functi
     if(req.params.thm !== 'x'){
       api_url_filtred+='&themes='+req.params.thm;
     }
-    api_url_filtred+='&sort='+req.params.srt;
+    if(req.params.srt !== 'x'){
+      api_url_filtred+='&sort='+req.params.srt;
+    }
     console.log("filtred resultes"+api_url_filtred);
       fetch(api_url_filtred, settings)
       .then(res => res.json())
       .then((json) => {
           res.send(json);
-      });
+    });
 });
 module.exports = router;
