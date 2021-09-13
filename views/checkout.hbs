@@ -1,0 +1,65 @@
+<div class="row mt-5">
+    <div class="col-md-8 mb-4" >
+        <div class="mt-3 bg-white rounded-3 p-5" style="height: 300px;">
+            <div class="mb-3">
+                  <!--  Vos informations-->
+                  <h2 class="h3 mb-3"><span class="btn btn-outline-info btn-sm    mr-2 rounded-75">01</span> Vos informations</h2>
+                  <div class="d-flex flex-row mb-2">
+                    <div class="pr-3">
+                      <label class="content-radio">
+                        Mr
+                        <input type="radio" name="title" id="mr" class=" " value="Mr." checked="">
+                        <span class="checkmark-radio"></span>
+                      </label>
+                    </div>
+                    <div class="pr-3"> 
+                      <label class="content-radio">
+                        Mme
+                        <input type="radio" name="title" id="mme" class="" value="Mme">
+                        <span class="checkmark-radio"></span>
+                      </label>
+                    </div>                     
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class=" form-group">
+                            <label for="firstName">
+                                  Prénom*
+                            </label>
+                            <input id="firstName" name="firstName" placeholder="Prénom" required="" class="form-control" type="text" minlength="2" maxlength="25" data-fv-field="firstName">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small></div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="lastName">
+                                Nom*
+                            </label>
+                            <input id="lastName" name="lastName" placeholder="Nom de famille" class="form-control" required="" type="text" minlength="2" maxlength="25" data-fv-field="lastName">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" form-group">
+                            <label for="email">Votre e-mail* </label>
+                            <input id="email" name="email" class="form-control" placeholder="Votre E-mail ici" type="email" required="" data-fv-field="email">  
+                              <small>(Pour y recevoir votre e-mail de confirmation) </small>
+                        <small class="help-block" data-fv-validator="emailAddress" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une adresse e-mail valide</small><small class="help-block" data-fv-validator="notEmpty" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" form-group">
+                          <label for="mobile">Mobile*</label>
+                          <input id="mobile" name="mobile" class="form-control" type="text" minlength="8" maxlength="20" required="" data-fv-field="mobile">
+                          <small>(Pour vous contacter si besoin) </small>
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="mobile" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="mobile" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small></div>
+                    </div>
+                  </div>
+                </div>
+        </div>
+        <div class="mt-3 bg-white rounded-3" style="height: 300px;"></div>
+        <div class="mt-3 bg-white rounded-3" style="height: 300px;"></div>
+    </div>
+    <div class="col-md-4 mb-4" style="height: 300px;">
+        <div class="mt-3 bg-white rounded-3" style="height: 500px;"></div>
+        <div class="mt-3 bg-white rounded-3" style="height: 500px;"></div>
+        
+    </div>
+</div>

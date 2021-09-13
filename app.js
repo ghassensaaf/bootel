@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var hotelsRouter = require('./routes/hotels');
+var checkoutRouter = require('./routes/checkout');
 var hbs = require('hbs');
 
 var app = express();
@@ -30,6 +31,7 @@ app.locals.cities = [{"id":3,"name":"Hammamet"},{"id":7,"name":"Nabeul"},{"id":8
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hotels', hotelsRouter);
+app.use('/checkout',checkoutRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -120,7 +120,7 @@
         }
         rooms+=`<div class="row py-3 mt-3 rounded border room-card room-${hotel.hotelId}"  data-group="${rate.boardCode}">
                   <div class="col-5">
-                      <input type="checkbox" name="" id="">
+                      <input type="checkbox" name="" id="" value='${JSON.stringify(rate)}'>
                       <h6>1x ${room.name}</h6>
                       <p class="fs-6 text-muted"><i class="fas fa-users"></i> 2 adultes , 1 enfant</p>
                       <p><a href="#">Details chambre</a></p>
