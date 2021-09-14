@@ -12,20 +12,37 @@
                 </div>
                 <div class="col-md-4 col-sm-8 col-sm-offset-2 mb-2">
                     <div class="dropdown">
-                        <button class="travelers-btn white-btn btn btn-lg btn-outline-dark bg-white dropdown-toggle form-control" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="travelers-btn white-btn btn btn-lg btn-outline-dark bg-white dropdown-toggle form-control" type="button" id="room-dropdown-btn" aria-expanded="false">
                         </button>
-                        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+                        <div id="room-dropdown" class="dropdown-menu w-100" >
                             <div class="alert alert-danger" role="alert"></div>
-                            <div class="rooms">
-                                <div class="room r1">
+                            <div id="sf-rooms">
+                                <div class="sf-room r1">
                                     <h6>room 1</h6>
-                                    <label for="adultes">adultes</label>
-                                    <input class="adultes a-r1 form-control" type="number" id="adultesR1" value="2" max="6" min="1">
-                                    <label for="childrenR1">children</label>
-                                    <input class="children ch-r1 form-control" type="number" name="" id="childrenR1" value="0" max="3" min="0">
-                                    <div class="ch-age row"></div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="adultes">adultes</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="adultes a-r1 form-control" type="number" id="adultesR1" value="2" max="6" min="1">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="childrenR1">children</label>
+                                            </div>
+                                            <div class="col children-input">
+                                                <input class="children ch-r1 form-control" type="number" name="" id="children-R1" value="0" max="3" min="0">
+                                            </div>
+                                        </div>
+                                        <div class="ch-r1-age row"></div>
+                                    </div>
+                                    
                                 </div>
                             </div>
+                            <div class="row"> <span id="delRoom" class="col text-danger" style="display: none;"> <i class="fas fa-minus"></i> delete room </span></div>
+                            <div class="row"><span id="addRoom" class="col"><i class="fas fa-plus"></i> Add room </span></div>
                         </div>
                     </div>
                 </div>
@@ -43,56 +60,3 @@
                     </div>
             </div>
     </form>
-    <script>
-        
-        $(document).ready(function(){
-            $('.travelers-btn').html('1 room 2 travelers');
-            var pax= '2'
-            var travelers=2;
-            $('#pax').val(pax);
-            $('.adultes, .children').on('change', '', function() {
-                var age=``;
-                var chA='';
-                for(let i=0;i<$('#childrenR1').val();i++){   
-                    age+='\n'+`<select name="" id="r1-ch${i+1}" class="col mx-1 mt-2 form-control">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>`;
-                }
-                $('.ch-age').html(age);
-                for(let i =0;i<$('#childrenR1').val();i++)
-                {
-                    let chn=i+1;
-                    chA+=','+$('#r1-ch'+chn).val();
-                }
-                pax= $('.a-r1').val()+chA;
-                console.log(pax);
-                $('#pax').val(pax);
-                travelers=0+parseInt($('.a-r1').val())+parseInt($('.ch-r1').val());
-                $('.travelers-btn').html('1 room '+travelers+' travelers');
-            });
-            $('.ch-age').on('change', '', function() {
-                var age=``;
-                var chA='';
-                for(let i =0;i<$('#childrenR1').val();i++)
-                {
-                    let chn=i+1;
-                    chA+=','+$('#r1-ch'+chn).val();
-                }
-                pax= $('.a-r1').val()+chA;
-                console.log(pax);
-                $('#pax').val(pax);
-            });
-
-        });
-    </script>

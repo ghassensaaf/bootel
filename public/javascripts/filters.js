@@ -116,12 +116,12 @@ function showRooms(btn){
   var pic='#'+hotelID+'-pic';
   
   if($(rooms).is(":hidden")){
-    $('#'+btn.id).html("hide rooms")
+    $('#'+btn.id).html("hide rooms");
     $(pic).css("border-bottom-left-radius", "0");
   }
   else
   {
-    $('#'+btn.id).html("show rooms")
+    $('#'+btn.id).html("show rooms");
     $(pic).css("border-bottom-left-radius", "1.5rem");
   }
   $(rooms).slideToggle();
