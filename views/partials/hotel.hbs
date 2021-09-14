@@ -20,7 +20,7 @@
         </div>
         </div>
     </div>
-    <div id="${hotel.hotelId}-hotelRooms" class="container py-5" style="display: none;" >
+    <div id="${hotel.hotelId}-hotelRooms" class="container py-2" style="display: none;" >
         <div class="">
             <div class="row">
                 <div class="col card-body">
@@ -35,7 +35,10 @@
                 ${roomFilters}
             </div>
             <div  class="rooms" >
-                ${rooms}
+                <form action="/checkout" method="post">
+                    ${rooms}
+                    <input type="submit">
+                </form>
             </div>
         </div>
     </div>

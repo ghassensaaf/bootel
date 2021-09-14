@@ -5,43 +5,43 @@
 <!-- Section: Search engine -->
 <div class="row mt-5">
   <div class="col-md-3 mb-4">
-      <!-- Section: Sidebar -->
+    <!-- Section: Sidebar -->
     <section id="sidebar" class="mb-3" >
-        <!-- Section: Filters -->
-        <section class="p-3" id="filters">
-            <h5>Filters</h5>
-            <!-- Section: Price  -->
-            <section id="price-filter" class="mb-4"></section>
-            <!-- Section: Price  -->
-            <!-- Section: rating -->
-            <section class="mb-4">
-              <h6 class="font-weight-bold mb-3">Rating</h6>
-                  <div id="rating-filter"></div>
-            </section>
-            <!-- Section: rating -->
-            <!-- Section: Boards -->
-            <section class="mb-4">
-              <h6 class="font-weight-bold mb-3">Boards</h6>
-              <div id="board-filter"></div>
-            </section>
-            <!-- Section: Boards -->
-            <!-- Section: Themes -->
-            <section class="mb-4">
-              <h6 class="font-weight-bold mb-3">Themes</h6>
-              <div id="theme-filter"></div>
-            </section>
-            <!-- Section: Themes -->
+      <!-- Section: Filters -->
+      <section class="p-3" id="filters">
+        <h5>Filters</h5>
+        <!-- Section: Price  -->
+        <section id="price-filter" class="mb-4"></section>
+        <!-- Section: Price  -->
+        <!-- Section: rating -->
+        <section class="mb-4">
+          <h6 class="font-weight-bold mb-3">Rating</h6>
+          <div id="rating-filter"></div>
         </section>
-        <!-- Section: Filters -->
+        <!-- Section: rating -->
+        <!-- Section: Boards -->
+        <section class="mb-4">
+          <h6 class="font-weight-bold mb-3">Boards</h6>
+          <div id="board-filter"></div>
+        </section>
+        <!-- Section: Boards -->
+        <!-- Section: Themes -->
+        <section class="mb-4">
+          <h6 class="font-weight-bold mb-3">Themes</h6>
+          <div id="theme-filter"></div>
+        </section>
+        <!-- Section: Themes -->
+      </section>
+      <!-- Section: Filters -->
     </section>
-  <!-- Section: Sidebar -->
+    <!-- Section: Sidebar -->
   </div>
   <div class="col-md-9 mb-4">
     <!-- Section: Products  -->
     <section class="mb-3">
       <!-- Sorting -->
       <section class="mb-3">
-        <div class="row d-flex"> 
+        <div class="row d-flex">
           <div class="col-md-4 col-sm-12 ">
             <input type="text" name="" id="resultCount" class=" md-form md-outline form-control bg-white update border-dark " disabled readonly>
           </div>
@@ -67,7 +67,8 @@
       <!-- hotels -->
       <section>
         <!-- Loader -->
-        {{!-- <div id="loader" class="loader-overlay">
+        {{!-- 
+        <div id="loader" class="loader-overlay">
           <div class="preloader-wrapper active">
             <div class="spinner-layer spinner-blue-only">
               <div class="circle-clipper left">
@@ -81,22 +82,21 @@
               </div>
             </div>
           </div>
-        </div> --}}
+        </div>
+        --}}
         <!-- Loader -->
         <!-- Grid row -->
         <div class="" id="products"></div>
-        <div>
-          <button class="btn btn-outline-info" id="show-more">Show More</button>
+        <div class="justify-content-center row mt-3">
+          <div class="col-2">
+            <button class="btn btn-outline-info mx-auto form-control" id="show-more">Show More</button>
+          </div>
         </div>
         <!-- Grid row -->
       </section>
     </section>
     <!-- Section: Products  -->
   </div>
-
-  
-
-  
 </div>
 <script>
   function hotelTemplate(hotel) {
@@ -105,9 +105,7 @@
       roomTypes=[];
       roomFilters=``;
       $.each(room.rates, function(index, rate) {
-        
         roomTypes.push({id:rate.boardCode,board:rate.boardName})
-        
         oldRate=''
         minCancelDate=''
         if(typeof(rate.cancellationPolicies[0])!=='undefined')
@@ -118,9 +116,11 @@
         {
           oldRate=rate.amountWithoutPromotion + ' TND'
         }
+        pensionId=JSON.stringify(rate);
+        console.log(pensionId);
         rooms+=`<div class="row py-3 mt-3 rounded border room-card room-${hotel.hotelId}"  data-group="${rate.boardCode}">
                   <div class="col-5">
-                      <input type="checkbox" name="" id="" value='${JSON.stringify(rate)}'>
+                      <input type="checkbox" name="pensionId" id="" value='${pensionId}'>
                       <h6>1x ${room.name}</h6>
                       <p class="fs-6 text-muted"><i class="fas fa-users"></i> 2 adultes , 1 enfant</p>
                       <p><a href="#">Details chambre</a></p>

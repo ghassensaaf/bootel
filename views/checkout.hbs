@@ -1,65 +1,272 @@
 <div class="row mt-5">
-    <div class="col-md-8 mb-4" >
-        <div class="mt-3 bg-white rounded-3 p-5" style="height: 300px;">
-            <div class="mb-3">
-                  <!--  Vos informations-->
-                  <h2 class="h3 mb-3"><span class="btn btn-outline-info btn-sm    mr-2 rounded-75">01</span> Vos informations</h2>
-                  <div class="d-flex flex-row mb-2">
-                    <div class="pr-3">
-                      <label class="content-radio">
-                        Mr
-                        <input type="radio" name="title" id="mr" class=" " value="Mr." checked="">
-                        <span class="checkmark-radio"></span>
-                      </label>
-                    </div>
-                    <div class="pr-3"> 
-                      <label class="content-radio">
-                        Mme
-                        <input type="radio" name="title" id="mme" class="" value="Mme">
-                        <span class="checkmark-radio"></span>
-                      </label>
-                    </div>                     
-                  </div>
-                  <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class=" form-group">
-                            <label for="firstName">
-                                  Prénom*
-                            </label>
-                            <input id="firstName" name="firstName" placeholder="Prénom" required="" class="form-control" type="text" minlength="2" maxlength="25" data-fv-field="firstName">
-                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small></div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="lastName">
-                                Nom*
-                            </label>
-                            <input id="lastName" name="lastName" placeholder="Nom de famille" class="form-control" required="" type="text" minlength="2" maxlength="25" data-fv-field="lastName">
-                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class=" form-group">
-                            <label for="email">Votre e-mail* </label>
-                            <input id="email" name="email" class="form-control" placeholder="Votre E-mail ici" type="email" required="" data-fv-field="email">  
-                              <small>(Pour y recevoir votre e-mail de confirmation) </small>
-                        <small class="help-block" data-fv-validator="emailAddress" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une adresse e-mail valide</small><small class="help-block" data-fv-validator="notEmpty" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class=" form-group">
-                          <label for="mobile">Mobile*</label>
-                          <input id="mobile" name="mobile" class="form-control" type="text" minlength="8" maxlength="20" required="" data-fv-field="mobile">
-                          <small>(Pour vous contacter si besoin) </small>
-                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="mobile" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="mobile" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small></div>
-                    </div>
-                  </div>
-                </div>
+  <div>
+    <h4>  Complétez votre réservation en moins de 2 minutes</h4 >
+  </div>
+  <div class="col-md-8 mb-4" >
+    <div class="mt-3 bg-white rounded-3 p-5" >
+      <div class="mb-3">
+        <!--  Vos informations-->
+        <h2 class="h3 mb-3">1. Informations de facturation</h2>
+        <div class="d-flex flex-row mb-2">
+          <div class="col-1 mr-5">
+            <label class="content-radio mr-4">
+            <input type="radio" name="title" id="mr" class="form-check-input" value="Mr." checked="">
+            Mr  
+            <span class="checkmark-radio"></span>
+            </label>
+          </div>
+          <div class="col-1"> 
+            <label class="content-radio">
+            <input type="radio" name="title" id="mme" class="form-check-input" value="Mme">
+            Mme
+            <span class="checkmark-radio"></span>
+            </label>
+          </div>
         </div>
-        <div class="mt-3 bg-white rounded-3" style="height: 300px;"></div>
-        <div class="mt-3 bg-white rounded-3" style="height: 300px;"></div>
+        <div class="row">
+          <div class="col-12 col-md-6 mb-2">
+            <div class=" form-group">
+              <label for="firstName">
+              Prénom*
+              </label>
+              <input id="firstName" name="firstName" placeholder="Prénom" required="" class="form-control border-dark" type="text" minlength="2" maxlength="25" data-fv-field="firstName">
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 mb-2">
+            <div class="form-group">
+              <label for="lastName">
+              Nom*
+              </label>
+              <input id="lastName" name="lastName" placeholder="Nom de famille" class="form-control border-dark" required="" type="text" minlength="2" maxlength="25" data-fv-field="lastName">
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class=" form-group">
+              <label for="email">Votre e-mail* </label>
+              <input id="email" name="email" class="form-control border-dark" placeholder="Votre E-mail ici" type="email" required="" data-fv-field="email">  
+              <small>(Pour y recevoir votre e-mail de confirmation) </small>
+              <small class="help-block" data-fv-validator="emailAddress" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une adresse e-mail valide</small><small class="help-block" data-fv-validator="notEmpty" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class=" form-group">
+              <label for="mobile">Mobile*</label>
+              <input id="mobile" name="mobile" class="form-control border-dark" type="text" minlength="8" maxlength="20" required="" data-fv-field="mobile" placeholder="+216 12345678">
+              <small>(Pour vous contacter si besoin) </small>
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="mobile" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="mobile" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 mb-4" style="height: 300px;">
-        <div class="mt-3 bg-white rounded-3" style="height: 500px;"></div>
-        <div class="mt-3 bg-white rounded-3" style="height: 500px;"></div>
-        
+    <div class="mt-3 bg-white rounded-3 p-5" >
+      <div class="mb-3">
+        <!--Information sur la chambre-->    
+        <h2 class="h3 mb-3">2. Informations sur l'occupation</h2>
+        <p class="mb-3 font-weight-600 fw-bold" style="color: #0b7a999a;">1 x Standard Double Without Balcony Standard Vue Jardin Soft All Inclusive <span class="badge badge-warning">Sur demande</span>  </p>
+        <div class="row d-flex mb-3">
+          <div class="col-1 align-self-center pr-1 mb-2">
+            <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;">1.</label>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="form-group">
+              <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
+                <option value="Mr">Mr</option>
+                <option value="Mme">Mme</option>
+                <option value="Mlle">Mlle</option>
+              </select>
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="form-group">
+              <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="form-group">
+              <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+            </div>
+          </div>
+          <div class="col-md d-flex mb-2">
+            <span class="fw-bold d-flex">adulte</span>
+            <input name="age_1_1_1" type="hidden" value="30">
+          </div>
+        </div>
+        <div class="row d-flex mb-3">
+          <div class="col-1 align-self-center pr-1 mb-2">
+            <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"> 2.</label>
+          </div>
+          <div class="col-md-3  mb-2">
+            <div class="form-group">
+              <select name="title_1_2_1" class="form-control border-dark" required="" data-fv-field="title_1_2_1">
+                <option value="Mr">Mr</option>
+                <option value="Mme">Mme</option>
+                <option value="Mlle">Mlle</option>
+              </select>
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+            </div>
+          </div>
+          <div class="col-md-3  mb-2">
+            <div class="form-group">
+              <input type="text" class="form-control border-dark" id="firstName_1_2_1" required="" name="firstName_1_2_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_2_1">
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+            </div>
+          </div>
+          <div class="col-md-3  mb-2">
+            <div class="form-group">
+              <input type="text" class="form-control border-dark" id="lastName_1_2_1" required="" name="lastName_1_2_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_2_1">
+              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+            </div>
+          </div>
+          <div class="col-md  mb-2">
+            <span class="fw-bold">adulte</span>
+            <input name="age_1_2_1" type="hidden" value="30">
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="mt-3 bg-white rounded-3 p-5" >
+      <div class="">
+        <!--Informations complémentaires-->                    
+        <h2 class="h3 mb-3">3. Comment désirez vous payer ?</h2>
+        <div class="mb-2">
+          <h5 class="mb-0" style="color:#0b7a999a;">Je paye à l'agence</h5>
+          <div id="" class="" aria-labelledby="" data-parent="" style="">
+            <div class="card-body px-0 px-md-3">
+              <div class="row mb-md-2">
+                <div class="col-md-6">
+                  <label class="content-radio">
+                  <input type="radio" name="modePayment" class="modePayment" value="43|AGV" checked="">
+                  Agence Tunis (Montplaisir)
+                  <span class="checkmark-radio"></span>
+                  </label>
+                </div>
+                <div class="col-md-6"> 
+                  <label class="content-radio">
+                  <input type="radio" name="modePayment" class="modePayment" value="44|AGV">
+                  Agence Hammamet
+                  <span class="checkmark-radio"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6"> 
+                  <label class="content-radio">
+                  <input type="radio" name="modePayment" class="modePayment" value="45|AGV">
+                  Agence Sousse
+                  <span class="checkmark-radio"></span>
+                  </label>
+                </div>
+                <div class="col-md-6"> 
+                  <label class="content-radio">
+                  <input type="radio" name="modePayment" class="modePayment" value="46|AGV">
+                  Agence Djerba
+                  <span class="checkmark-radio"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 bg-white rounded-3 p-5" >
+      <div class="mb-3">
+        <!--Informations complémentaires-->                    
+        <h2 class="h3 mb-3">4. Informations complémentaires</h2>
+        <div class="form-group mb-3">
+          <textarea type="text" id="message" name="message" class="form-control" placeholder="Ecrire un message"></textarea>
+        </div>
+        <h4 class="font-18  mb-3">Conditions particulières</h4>
+        <div class="alert alert-warning" role="alert">
+          <p></p>
+          <h4>Taxe de Séjour:&nbsp;</h4>
+          <p>Une taxe touristique de séjour est appliquée à tous les clients (+12 ans) par nuitée, payable par le client à son arrivée de l’hôtel contre un reçu de <strong>1</strong>&nbsp;<strong>DT/nuitée/Adulte (pour hôtel 2*),</strong><strong>2 DT/nuitée/Adulte (pour hôtel 3*) </strong>et <strong>3 DT/nuitée/Adulte (pour hôtel 4* et 5*)</strong> . Cette taxe n'est pas applicable à partir de la 8ème nuitées.</p>
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 bg-white rounded-3 p-5" >
+      <div class="mb-3">
+        <h2 class="h3 mb-3">5. Conditions d'annulation</h2>
+        <div class="alert alert-danger" role="alert">
+          <label>Standard Double Without Balcony Standard Vue Jardin</label>
+          <p><strong>344.000 TND</strong> à payer pour toute annulation faite après le <strong>13/09/2021</strong> à <strong>23:59</strong> (Heure locale de la destination)</p>
+        </div>
+        <div class=" form-group position-relative">
+          <div class="custom-control custom-checkbox "> 
+            <label class="custom-control-label" for="checkbox-2"> 
+            <input type="checkbox" id="checkbox-2" name="confirm2" class="form-check-input" required="" data-fv-field="confirm2">
+            Veuillez cocher la case pour confirmer avoir lu et accepté 
+            <a href="javascript:void(0)" class="add" data-toggle="modal" data-target="#ANModal">
+            <u>Les conditions générales de vente et d'utilisation</u>
+            </a> 
+            </label>
+          </div>
+          <small class="help-block" data-fv-validator="notEmpty" data-fv-for="confirm2" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="mt-3 bg-white rounded-3">
+      <div class="card">
+        <img src="https://1915023314.rsc.cdn77.org/photos/16945/holiday-village-manar.jpg" height="150px" style="object-fit: cover;" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3>Magic Hotel Manar</h3>
+          <p class="h-rating"><i style="color: #FF9529;" class="fas fa-star" aria-hidden="true"></i><i style="color: #FF9529;" class="fas fa-star" aria-hidden="true"></i><i style="color: #FF9529;" class="fas fa-star" aria-hidden="true"></i><i style="color: #FF9529;" class="fas fa-star" aria-hidden="true"></i><i style="color: #FF9529;" class="fas fa-star" aria-hidden="true"></i></p>
+          <p class="card-text">1 x Standard Double Without Balcony Standard Vue Jardin Soft All Inclusive</p>
+          <hr>
+          <div class="container">
+            <p class="text-danger fs-6">Non-refundable <i class="fas fa-info-circle"></i></p>
+            <p class="text-muted fs-6">Check-in : 12/12/2021</p>
+            <p class="text-muted fs-6">Check-out : 14/12/2021</p>
+            <p class="text-muted fs-6">2 nuitées</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 bg-white rounded-3">
+      <div class="card">
+        <div class="card-body">
+          <h3>Détail tarifs</h3>
+          <hr>
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td class="p-2">1 x Standard Double x 2 nuitées</td>
+                <td class="p-2" align='right'>344.00 DT</td>
+              </tr>
+              <tr>
+                <td class="p-2">Taxes de séjour</td>
+                <td class="p-2" align='right'>6.00 DT</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td class="p-2 fw-bold">Total</td>
+                <td class="p-2 fw-bold" align='right'>350.00 DT</td>
+              </tr>
+              <tr>
+                <td class="p-2">à payer à l'agence</td>
+                <td class="p-2" align='right'>150.00 DT</td>
+              </tr>
+              <tr>
+                <td class="p-2">à payer à l'hotel</td>
+                <td class="p-2" align='right'>200.00 DT</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
