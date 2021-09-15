@@ -1,5 +1,4 @@
 function renderFilters(filters){
-  console.log(filters);
   const pricetemplate = filtersPriceTemplate(filters);
   const ratingtemplate = filters.ratings.length === 0 ? `<p>No matching results found.</p>` : filters.ratings.map((filter) => filtersRatingTemplate(filter)).join("\n");
   const boardtemplate = filters.boards.length === 0 ? `<p>No matching results found.</p>` : filters.boards.map((filter) => filtersBoardTemplate(filter)).join("\n");
@@ -10,7 +9,6 @@ function renderFilters(filters){
   $("#theme-filter").html(themetemplate);
 }
 function renderHotels(hotels) {
-  console.log(hotels);
   const template =
   hotels.length === 0 ? `
   <p>No matching results found.</p>
@@ -18,14 +16,13 @@ function renderHotels(hotels) {
   $("#products").html(template);
 }
 function showMoreHotels(hotels) {
-  console.log(hotels);
   const template =
   hotels.length === 0 ? `
   <p>No matching results found.</p>
   ` : hotels.map((hotel) => hotelTemplate(hotel)).join("\n");
   $("#products").append(template);
 }
-var parseQueryString = function() {
+function parseQueryString(){
 
   var str = decodeURIComponent(window.location.search);
   var objURL = {};
@@ -37,7 +34,7 @@ var parseQueryString = function() {
       }
   );
   return objURL;
-};
+}
 function getHotels() {
   var params = parseQueryString();
   if(params.hotelId==='')

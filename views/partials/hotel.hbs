@@ -1,23 +1,28 @@
 <div class="card mt-3 shadow-sm hotel" >
     <div class="row no-gutters">
-        <div class="col-4">
+        <div class="col-md-12 col-lg-4">
         <img id="${hotel.hotelId}-pic" data-src="${hotel.photos[0]}" class="card-img lazy" alt="...">
         </div>
-        <div class="col-5">
+        <div class="col-md-12 col-lg-8">
             <div class="card-body">
 
                 <h5 class="card-title">${hotel.name}</h5>
                 <p class="h-rating">${rating}</p>
                 <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}</p>
                 <hr>
-                <p class="card-text text-success">${hotel.marketingText}</p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-12">
+                        <p class="card-text text-success">${hotel.marketingText}</p>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-12">
+                        <div class="card-side card-body">
+                            <h5 class="card-price">à partir de ${hotel.minRate} ${hotel.currency}</h5>
+                            <button class="btn btn-outline-warning" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Show Rooms</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-3">
-        <div class="card-side card-body">
-            <h5 class="card-price">à partir de ${hotel.minRate} ${hotel.currency}</h5>
-            <button class="btn btn-outline-warning" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Show Rooms</button>
-        </div>
+            
         </div>
     </div>
     <div id="${hotel.hotelId}-hotelRooms" class="container py-2" style="display: none;" >
@@ -28,9 +33,9 @@
                 </div>
             </div>
             <div class="row mb-4 room-filters">
-                <div class="col-2">
+                <div class="col-4 mb-2 px-1">
                     <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-all"  autocomplete="off" data-set="all" checked>
-                    <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-all"> <small>All</small> </label><br>
+                    <label class="btn btn-outline-secondary" style="height:100%;  width:100%;" for="${hotel.hotelId}-all"> <small>All</small> </label><br>
                 </div>
                 ${roomFilters}
             </div>

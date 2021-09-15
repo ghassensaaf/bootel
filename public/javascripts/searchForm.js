@@ -1,4 +1,87 @@
-var cities = new Bloodhound({
+$(document).ready(function () {
+  // ***********************************initialize Search Engine***************************************************
+  initializeSE();
+  // ***********************************delete room***************************************************
+  $("#delRoom").on("click", "", function () {
+    deleteRoom();
+    update();
+  });
+  // ***********************************add room***************************************************
+  $("#addRoom").on("click", "", function () {
+    addRoom();
+    update();
+  });
+  // ***********************************update children select boxes***************************************************
+  $(document).on("change", ".children", function (e) {
+    updateChildren(e);
+  });
+  // ***********************************update***************************************************
+  $(document).on("change", "#sf-rooms", function () {
+    update();
+  });
+});
+
+// *******************************************************************************************************************
+// ****************************************functions******************************************************************
+// *******************************************************************************************************************
+
+function addRoom() {
+  var c = $(".sf-room").length + 1;
+  if (c > 1) {
+    $("#delRoom").show();
+  } else {
+    $("#delRoom").hide();
+  }
+  if (c === 4) {
+    $("#addRoom").hide();
+  } else {
+    $("#addRoom").show();
+  }
+  $("#sf-rooms").append(`<div class="sf-room r${c}">
+                              <h6>room ${c}</h6>
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col">
+                                          <label for="adultes">adultes</label>
+                                      </div>
+                                      <div class="col">
+                                          <input class="adultes a-r${c} form-control" type="number" id="adultesR${c}" value="2" max="6" min="1">
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col">
+                                          <label for="children-R1">children</label>
+                                      </div>
+                                      <div class="col children-input">
+                                          <input class="ch-r${c} form-control children" type="number" name="" id="children-R${c}" value="0" max="3" min="0">
+                                      </div>
+                                  </div>
+                                  <div class="ch-r${c}-age row"></div>
+                              </div>
+                              
+                          </div>`);
+}
+// *******************************************************************************************************************
+// *******************************************************************************************************************
+function deleteRoom() {
+  $(".sf-room").last().detach();
+  var c = $(".sf-room").length;
+  if (c > 1) {
+    $("#delRoom").show();
+  } else {
+    $("#delRoom").hide();
+  }
+  if (c === 4) {
+    $("#addRoom").hide();
+  } else {
+    $("#addRoom").show();
+  }
+}
+// *******************************************************************************************************************
+// *******************************************************************************************************************
+function initializeSE() {
+  // initialize city/hotels typeahead
+  var cities = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     identify: function (obj) {
@@ -7,7 +90,7 @@ var cities = new Bloodhound({
     prefetch: "/data/cities.json",
     limit: 5,
   });
-  
+
   function defaultCities(q, sync) {
     if (q === "") {
       sync(cities.all());
@@ -24,7 +107,7 @@ var cities = new Bloodhound({
     },
     limit: 5,
   });
-  
+
   $("#multiple-datasets .typeahead")
     .typeahead(
       {
@@ -49,7 +132,6 @@ var cities = new Bloodhound({
       }
     )
     .bind("typeahead:selected", function (obj, datum) {
-      console.log(datum);
       if (datum.type == "H") {
         $("#cityId").val(datum.cityId);
         $("#hotelId").val(datum.id);
@@ -57,20 +139,77 @@ var cities = new Bloodhound({
         $("#cityId").val(datum.id);
       }
     });
-  $(document).ready(function () {
-    ch_inp=$(".children-input");
-    $(".travelers-btn").html("1 room 2 travelers");
-    var pax = "2";
-    var travelers = 2;
-    $("#pax").val(pax);
-    $(".adultes, .children").on("change", function (e) {
-        console.log($(".children"));
-      var age = ``;
-      var chA = "";
-      for (let i = 0; i < $("#children-R1").val(); i++) {
-        age +=
-          "\n" +
-          `<select name="" id="r1-ch${i + 1}" class="col mx-1 mt-2 form-control">
+  // initialize rooms
+  $(".travelers-btn").html("1 room 2 travelers");
+  cop="ma";
+  var pax = "2";
+  var travelers = 2;
+  $("#pax").val(pax);
+
+  $("#room-dropdown-btn").on("click", function (event) {
+    $("#room-dropdown").toggleClass("show");
+  });
+  $("body").on("click", function (e) {
+    if (!$("#room-dropdown-btn").is(e.target) && !$("#room-dropdown").is(e.target) && $("#room-dropdown").has(e.target).length === 0 && $(".show").has(e.target).length === 0) {
+      $("#room-dropdown").removeClass("show");
+    }
+  });
+  // initialize checkin/checkout dates
+  var params = parseQueryString();
+  cop+="de by S";
+  if (typeof params.checkIn !== "undefined" && typeof params.checkOut !== "undefined" && typeof params.cityId !== "undefined") {
+    $("#checkIn").val(params.checkIn);
+    $("#checkOut").val(params.checkOut);
+    start = params.checkIn.substr(5, 2) + "/" + params.checkIn.substr(8, 2) + "/" + params.checkIn.substr(0, 4);
+    end = params.checkOut.substr(5, 2) + "/" + params.checkOut.substr(8, 2) + "/" + params.checkOut.substr(0, 4);
+    $.get("/data/cities.json", (json) => {
+      $.each(json, function (index, obj) {
+        if (obj.id == params.cityId) {
+          $("#typeaheadsearch").val(obj.name);
+          $("#cityId").val(obj.id);
+        }
+      });
+    }).fail(() => {
+      renderFilters([]);
+    });
+  } else {
+    today = new Date();
+    trw = new Date();
+    trw.setDate(today.getDate() + 1);
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var yyyy = today.getFullYear();
+    var ddt = String(trw.getDate()).padStart(2, "0");
+    var mmt = String(trw.getMonth() + 1).padStart(2, "0");
+    var yyyyt = trw.getFullYear();
+    today = yyyy + "-" + mm + "-" + dd;
+    trw = yyyyt + "-" + mmt + "-" + ddt;
+    $("#checkIn").val(today);
+    $("#checkOut").val(trw);
+    start = mm + "/" + dd + "/" + yyyy;
+    end = mmt + "/" + ddt + "/" + yyyyt;
+  }
+  cop+="neakyTu";
+  $("#dateRange").daterangepicker(
+    {
+      startDate: start,
+      endDate: end,
+    },
+    function (start, end, label) {
+      $("#checkIn").val(start.format("YYYY-MM-DD"));
+      $("#checkOut").val(end.format("YYYY-MM-DD"));
+    }
+  );
+  cop+="rtle";
+}
+// *******************************************************************************************************************
+function updateChildren(event) {
+  var chN = event.target.id[event.target.id.length - 1];
+  var age = ``;
+  for (let i = 0; i < $("#children-R" + chN).val(); i++) {
+    age +=
+      "\n" +
+      `<select name="" id="r${chN}-ch${i + 1}" class="col mx-1 mt-2 form-control">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -84,133 +223,22 @@ var cities = new Bloodhound({
                 <option value="11">11</option>
                 <option value="12">12</option>
             </select>`;
-      }
-      $(".ch-r1-age").html(age);
-      for (let i = 0; i < $("#children-R1").val(); i++) {
-        let chn = i + 1;
-        chA += "," + $("#r1-ch" + chn).val();
-      }
-      pax = $(".a-r1").val() + chA;
-      console.log(pax);
-      $("#pax").val(pax);
-      travelers = 0 + parseInt($(".a-r1").val()) + parseInt($(".ch-r1").val());
-      $(".travelers-btn").html("1 room " + travelers + " travelers");
-    });
-    $('#room-dropdown-btn').on('click', function (event) {
-        $('#room-dropdown').toggleClass('show');
-    });
-    $('body').on('click', function (e) {
-        if (!$('#room-dropdown-btn').is(e.target) && !$('#room-dropdown').is(e.target) && $('#room-dropdown').has(e.target).length === 0 && $('.show').has(e.target).length === 0) {
-            $('#room-dropdown').removeClass('show');
-        }
-    });
-    $(".ch-r1-age").on("change", "", function () {
-      var age = ``;
-      var chA = "";
-      for (let i = 0; i < $("#children-R1").val(); i++) {
-        let chn = i + 1;
-        chA += "," + $("#r1-ch" + chn).val();
-      }
-      pax = $(".a-r1").val() + chA;
-      console.log(pax);
-      $("#pax").val(pax);
-    });
-    $("#delRoom").on("click", "", function () {
-        ch_inp=$(".children-input");
-        console.log(ch_inp);
-        $('.sf-room').last().detach();
-        var c = $(".sf-room").length;
-        console.log(c);
-        if(c>1){
-            $('#delRoom').show();
-        }
-        else{
-            $('#delRoom').hide();
-        }
-        if(c===4){
-            $('#addRoom').hide();
-        }
-        else{
-            $('#addRoom').show();
-        }
-    });
-    $("#addRoom").on("click", "", function () {
-        ch_inp=$(".children-input");
-        console.log(ch_inp);
-        var c = $(".sf-room").length+1;
-        if(c>1){
-            $('#delRoom').show();
-        }
-        else{
-            $('#delRoom').hide();
-        }
-        if(c===4){
-            $('#addRoom').hide();
-        }
-        else{
-            $('#addRoom').show();
-        }
-        $('#sf-rooms').append(`<div class="sf-room r${c}">
-                                    <h6>room ${c}</h6>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <label for="adultes">adultes</label>
-                                            </div>
-                                            <div class="col">
-                                                <input class="adultes a-r${c} form-control" type="number" id="adultesR${c}" value="2" max="6" min="1">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <label for="children-R1">children</label>
-                                            </div>
-                                            <div class="col children-input">
-                                                <input class="ch-r${c} form-control children" type="number" name="" id="children-R${c}" value="0" max="3" min="0">
-                                            </div>
-                                        </div>
-                                        <div class="ch-r${c}-age row"></div>
-                                    </div>
-                                    
-                                </div>`);
-                                
-    });
-    $(document).on("change", ".children", function () {
-        console.log($(".children"));
-        var age = ``;
-        var chA = "";
-        for (let i = 0; i < $("#children-R1").val(); i++) {
-          age +=
-            "\n" +
-            `<select name="" id="r1-ch${i + 1}" class="col mx-1 mt-2 form-control">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-              </select>`;
-        }
-        $(".ch-r1-age").html(age);
-        for (let i = 0; i < $("#children-R1").val(); i++) {
-          let chn = i + 1;
-          chA += "," + $("#r1-ch" + chn).val();
-        }
-        pax = $(".a-r1").val() + chA;
-        console.log(pax);
-        $("#pax").val(pax);
-        travelers = 0 + parseInt($(".a-r1").val()) + parseInt($(".ch-r1").val());
-        $(".travelers-btn").html("1 room " + travelers + " travelers");
-    });
-    $("#sf-rooms").on("change", "", function () {
-        console.log("working2");
-    });
-
-  });
-  
+  }
+  $(".ch-r" + chN + "-age").html(age);
+}
+function update() {
+  var roomCount = $(".sf-room").length;
+  var adultCount = 0;
+  var childrenCount = 0;
+  pax = "";
+  for (let i = 1; i < parseInt(roomCount + 1); i++) {
+    adultCount += parseInt($("#adultesR" + i).val());
+    childrenCount += parseInt($("#children-R" + i).val());
+    pax += $("#adultesR" + i).val();
+    for (let j = 1; j < parseInt($("#children-R" + i).val()) + 1; j++) {
+      pax += "," + $("#r" + i + "-ch" + j).val();
+    }
+    pax += ";";
+  }
+  $("#pax").val(pax);
+}

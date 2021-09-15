@@ -4,7 +4,7 @@
 </div>
 <!-- Section: Search engine -->
 <div class="row mt-5">
-  <div class="col-md-3 mb-4">
+  <div class="col-lg-3 mb-4">
     <!-- Section: Sidebar -->
     <section id="sidebar" class="mb-3" >
       <!-- Section: Filters -->
@@ -36,7 +36,7 @@
     </section>
     <!-- Section: Sidebar -->
   </div>
-  <div class="col-md-9 mb-4">
+  <div class="col-lg-9 mb-4">
     <!-- Section: Products  -->
     <section class="mb-3">
       <!-- Sorting -->
@@ -117,15 +117,45 @@
           oldRate=rate.amountWithoutPromotion + ' TND'
         }
         pensionId=JSON.stringify(rate);
-        console.log(pensionId);
+        occupants=``;
+        if(rate.adults===1)
+        {
+          occupants+= rate.adults +' adulte';
+        }
+        else
+        {
+          occupants+= rate.adults +' adultes';
+        }
+        if(rate.children !== 0)
+        {
+          if(rate.children===1)
+          {
+            occupants+=', '+ rate.children +' enfant';
+          }
+          else
+          {
+            occupants+=', '+ rate.children +' enfants';
+          }
+        }
+        if(rate.infant !== 0)
+        {
+          if(rate.infant===1)
+          {
+            occupants+=', '+ rate.infant +' bébé';
+          }
+          else
+          {
+            occupants+=', '+ rate.infant +' bébés';
+          }
+        }
         rooms+=`<div class="row py-3 mt-3 rounded border room-card room-${hotel.hotelId}"  data-group="${rate.boardCode}">
-                  <div class="col-5">
+                  <div class="col-lg-6 col-md-12">
                       <input type="checkbox" name="pensionId" id="" value='${pensionId}'>
-                      <h6>1x ${room.name}</h6>
-                      <p class="fs-6 text-muted"><i class="fas fa-users"></i> 2 adultes , 1 enfant</p>
+                      <h6>${rate.rooms}x ${room.name}</h6>
+                      <p class="fs-6 text-muted"><i class="fas fa-users"></i> ${occupants}</p>
                       <p><a href="#">Details chambre</a></p>
                   </div>
-                  <div class="col-3">
+                  <div class="col-lg-3 col-md-8">
                       <p class="text-success fw-bold"><small>${minCancelDate}</small></p>
                       <p class="text-danger">Non remboursable</p>
                       <p class="fs-6 text-secondary">Min ${rate.minStay} nuitées</p>
@@ -140,12 +170,11 @@
         });
       
     });
-    console.log(roomTypes);
     $.each(roomTypes, function(index, type) {
       roomFilters+=`
-                    <div class="col">
+                    <div class="col-4 mb-2 px-1">
                       <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-${type.id}"  autocomplete="off" data-set="${type.id}" >
-                      <label class="btn btn-outline-secondary form-control" for="${hotel.hotelId}-${type.id}"> <small>${type.board}</small> </label><br>
+                      <label class="btn btn-outline-secondary" style="height:100%; width:100%;" for="${hotel.hotelId}-${type.id}"> <small>${type.board}</small> </label><br>
                     </div>`;
     });
     stars=hotel.rating;

@@ -10,7 +10,6 @@ function filter(searchCode,total)
       $('#show-more').hide();
     }
     $('.update').on('change', '', function() {
-        console.log(this);
         currentPage=1;
         sort=$("#sort-select option:selected").val();
         rating =[];
@@ -95,17 +94,13 @@ function filter(searchCode,total)
 }
 function filterRooms(){
   $('.room-filter').on('change', '', function() {
-    console.log(this.id);
     var hotelID=this.id.substr(0, this.id.indexOf('-'));
     var hotelRoom='.room-'+hotelID+"[data-group";
-    console.log(hotelID);
     if (this.dataset.set == "all") {
       $(hotelRoom+']').show();
       return false;
     }
     var $currentLists = $(hotelRoom +'='+ this.dataset.set + "]");
-    console.log(hotelRoom+']');
-    console.log($currentLists);
     testtt=$(hotelRoom+']').not($currentLists).hide();
     $currentLists.show();
   });
@@ -125,6 +120,4 @@ function showRooms(btn){
     $(pic).css("border-bottom-left-radius", "1.5rem");
   }
   $(rooms).slideToggle();
-  
-  
 }
