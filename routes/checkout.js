@@ -11,7 +11,6 @@ router.post('/', function(req, res, next) {
             test.push(JSON.parse(req.body.pensionId[i]));
         }
     }
-    
     console.log(test);
     res.render('checkout', { title: 'Bootel | checkout',layout :'layouts/main'});
 });
