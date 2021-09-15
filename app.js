@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var hotelsRouter = require('./routes/hotels');
+var hotelsRouter = require('./routes/hotel');
 var checkoutRouter = require('./routes/checkout');
 var hbs = require('hbs');
 

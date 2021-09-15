@@ -53,7 +53,7 @@ function getHotels() {
       searchCode=json.searchCode;
       total=json.total;
       filterRooms();
-      $('#resultCount').val(total + ' Hotels à '+json.hotels[0].city);
+      $('#resultCount').html(total + ' Hotels à '+json.hotels[0].city);
       filterUrl='hotels/api/Filter/'+searchCode;
       $.get(
         filterUrl,
@@ -72,4 +72,8 @@ function getHotels() {
     renderhotels([]);
   });
 }
+par=parseQueryString();
 
+if(typeof(par.cityId)!=='undefined'){
+  getHotels();
+}

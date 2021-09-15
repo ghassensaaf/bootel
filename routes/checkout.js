@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
 router.post('/', function(req, res, next) {  
     test =[]; 
     if(typeof(req.body.pensionId)==="string"){

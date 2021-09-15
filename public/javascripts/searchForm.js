@@ -140,7 +140,7 @@ function initializeSE() {
       }
     });
   // initialize rooms
-  $(".travelers-btn").html("1 room 2 travelers");
+  $(".travelers-btn").html("1 room, 2 adultes");
   cop="ma";
   var pax = "2";
   var travelers = 2;
@@ -240,5 +240,13 @@ function update() {
     }
     pax += ";";
   }
+  var occu= roomCount;
+  if(roomCount===1){occu+=' room';}else{occu+=' rooms';}
+  if(adultCount===1){occu+=', '+adultCount+' adulte';}else{occu+=', '+adultCount+' adultes';}
+  if(childrenCount>0){
+    if(childrenCount===1){occu+=', '+childrenCount+' enfant';}else{occu+=', '+childrenCount+' enfants';}
+  }
+
+  $(".travelers-btn").html(occu);
   $("#pax").val(pax);
 }

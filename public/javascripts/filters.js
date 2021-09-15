@@ -39,6 +39,7 @@ function filter(searchCode,total)
               });
               renderHotels(json.hotels);
               filterRooms();
+              $('#resultCount').html(json.total + ' Hotels à '+json.hotels[0].city);
               pages=Math.ceil(json.total/10);
               if(currentPage>=pages){
                 $('#show-more').hide();
