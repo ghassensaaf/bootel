@@ -1,8 +1,12 @@
 // import hotelModel, { hotelApiFilters } from '../models/hotel-model';
 var hotelModel=require('../models/hotel-model');
+var { randomBytes } = require('crypto');
 module.exports = {
     hotelsPage:function(req, res, next) {
-        res.render('hotels', { title: 'Bootel | Hotels Search Results', layout :'layouts/main'});
+        if (req.session.csrf === undefined) {
+            req.session.csrf = randomBytes(100).toString('base64'); // convert random data to a string
+        }
+        res.render('hotels', { title: 'Bootel | Hotels Search Results', layout :'layouts/main', token : req.session.csrf});
     },
     getHotels:async function(req, res, nx){
         try {

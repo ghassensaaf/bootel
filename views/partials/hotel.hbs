@@ -42,6 +42,7 @@
             <div  class="rooms" >
                 <form action="/checkout" method="post">
                     ${rooms}
+                    <input type="hidden" name="csrf" value="{{token}}">
                     <input type="hidden" name="searchCode" value="${searchCode}">
                     <input type="submit">
                 </form>

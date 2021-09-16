@@ -1,16 +1,17 @@
 const fetch = require('node-fetch');
 let settings ={methode:"post"};
 module.exports={
-  checkRate: function(pensionId, searchCode){
-    api_checkRate_url = 'https://api-prod.boosterbc.com/rest/hotels-v3/checkRate';
-    body =createBody(pensionId, searchCode);
-    return fetch(api_checkRate_url, {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' }
-    });
-  }
+    checkRate: function(pensionId, searchCode){
+        api_checkRate_url = 'https://api-prod.boosterbc.com/rest/hotels-v3/checkRate';
+        body =createBody(pensionId, searchCode);
+        return fetch(api_checkRate_url, {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }
 };
+
 function createBody(pensionId, searchCode){
     console.log(searchCode);
     body={
