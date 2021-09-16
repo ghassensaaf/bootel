@@ -37,7 +37,7 @@ function filter(searchCode,total)
               $(function() {
                 $('.lazy').lazy();
               });
-              renderHotels(json.hotels);
+              renderHotels(json.hotels,json.searchCode);
               filterRooms();
               $('#resultCount').html(json.total + ' Hotels à '+json.hotels[0].city);
               pages=Math.ceil(json.total/10);
@@ -84,7 +84,7 @@ function filter(searchCode,total)
             $(function() {
               $('.lazy').lazy();
             });
-            showMoreHotels(json.hotels);
+            showMoreHotels(json.hotels,json.searchCode);
             filterRooms();
           },
           error:function(){

@@ -8,18 +8,18 @@ function renderFilters(filters){
   $("#board-filter").html(boardtemplate);
   $("#theme-filter").html(themetemplate);
 }
-function renderHotels(hotels) {
+function renderHotels(hotels,searchCode) {
   const template =
   hotels.length === 0 ? `
   <p>No matching results found.</p>
-  ` : hotels.map((hotel) => hotelTemplate(hotel)).join("\n");
+  ` : hotels.map((hotel) => hotelTemplate(hotel,searchCode)).join("\n");
   $("#products").html(template);
 }
-function showMoreHotels(hotels) {
+function showMoreHotels(hotels,searchCode) {
   const template =
   hotels.length === 0 ? `
   <p>No matching results found.</p>
-  ` : hotels.map((hotel) => hotelTemplate(hotel)).join("\n");
+  ` : hotels.map((hotel) => hotelTemplate(hotel,searchCode)).join("\n");
   $("#products").append(template);
 }
 function parseQueryString(){
@@ -49,8 +49,8 @@ function getHotels() {
       $(function() {
         $('.lazy').lazy();
       });
-      renderHotels(json.hotels);
       searchCode=json.searchCode;
+      renderHotels(json.hotels,searchCode);
       total=json.total;
       filterRooms();
       $('#resultCount').html(total + ' Hotels à '+json.hotels[0].city);
