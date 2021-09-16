@@ -12,7 +12,6 @@ module.exports = {
     },
     checkRate:async function(req, res) {
         if(csrf === req.session.csrf){
-            console.log("truee");
             try {
                 const rates     = await checkoutModel.checkRate(pensionId, searchCode);
                 const ratesJSON = await rates.json();
@@ -24,7 +23,6 @@ module.exports = {
         }
         else
         {
-            console.log("falsee");
             res.send("<h3>Invalid request</h3>")
         }
         
