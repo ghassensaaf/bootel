@@ -23,7 +23,7 @@ module.exports = {
         }
         else
         {
-            res.send("<h3>Invalid request</h3>")
+            res.send("<h3>Invalid request+req.session.csrf</h3>")
         }
         
     }
