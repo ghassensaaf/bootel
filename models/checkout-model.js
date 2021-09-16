@@ -19,6 +19,7 @@ function createBody(pensionId, searchCode){
         "searchCode":searchCode,
         "langId"    :1
     };
+    console.log(pensionId);
     if(typeof(pensionId)==='string'){
         room={
             "rateKey":pensionId

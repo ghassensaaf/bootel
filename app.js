@@ -35,6 +35,20 @@ hbs.registerHelper('for', function(n, block) {
       accum += block.fn(i);
   return accum;
 });
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+hbs.registerHelper('split', function(string) {
+  var t = string.split(",");
+  for(let i=0; i<t.length; i++){
+    t[i]=Number(t[i]);
+  }
+  console.log(t);
+  return t;
+});
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.use(logger('dev'));

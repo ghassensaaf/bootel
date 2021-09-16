@@ -65,69 +65,216 @@
         <!--Information sur la chambre-->    
         <h2 class="h3 mb-3">2. Informations sur l'occupation</h2>
         {{#each rooms}}
-        <p class="mb-3 font-weight-600 fw-bold" style="color: #0b7a999a;">1 x {{this.name}} {{#each this.rates}} <small><span class="text-warning"> {{this.boardName}}</span></small>  {{/each}} <span class="badge badge-warning">Sur demande</span>  </p>
-        <div class="row d-flex mb-3">
-          <div class="col-1 align-self-center pr-1 mb-2">
-            <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;">1.</label>
-          </div>
-          <div class="col-md-3 mb-2">
-            <div class="form-group">
-              <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
-                <option value="Mr">Mr</option>
-                <option value="Mme">Mme</option>
-                <option value="Mlle">Mlle</option>
-              </select>
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
-            </div>
-          </div>
-          <div class="col-md-3 mb-2">
-            <div class="form-group">
-              <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
-            </div>
-          </div>
-          <div class="col-md-3 mb-2">
-            <div class="form-group">
-              <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
-            </div>
-          </div>
-          <div class="col-md d-flex mb-2">
-            <span class="fw-bold d-flex">adulte</span>
-            <input name="age_1_1_1" type="hidden" value="30">
-          </div>
-        </div>
-        <div class="row d-flex mb-3">
-          <div class="col-1 align-self-center pr-1 mb-2">
-            <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"> 2.</label>
-          </div>
-          <div class="col-md-3  mb-2">
-            <div class="form-group">
-              <select name="title_1_2_1" class="form-control border-dark" required="" data-fv-field="title_1_2_1">
-                <option value="Mr">Mr</option>
-                <option value="Mme">Mme</option>
-                <option value="Mlle">Mlle</option>
-              </select>
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
-            </div>
-          </div>
-          <div class="col-md-3  mb-2">
-            <div class="form-group">
-              <input type="text" class="form-control border-dark" id="firstName_1_2_1" required="" name="firstName_1_2_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_2_1">
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
-            </div>
-          </div>
-          <div class="col-md-3  mb-2">
-            <div class="form-group">
-              <input type="text" class="form-control border-dark" id="lastName_1_2_1" required="" name="lastName_1_2_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_2_1">
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_2_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
-            </div>
-          </div>
-          <div class="col-md  mb-2">
-            <span class="fw-bold">adulte</span>
-            <input name="age_1_2_1" type="hidden" value="30">
-          </div>
-        </div>
+          {{#each rates}}
+            {{#ifCond this.rooms 1}}
+              <p class="mb-3 font-weight-600 fw-bold" style="color: #0b7a999a;">1 x {{../this.name}} {{#each ../this.rates}} <small><span class="text-warning"> {{this.boardName}}</span></small>  {{/each}} <span class="badge badge-warning">Sur demande</span>  </p>
+              {{#for this.adults}}
+                <div class="row d-flex mb-3">
+                  <div class="col-1 align-self-center pr-1 mb-2">
+                    <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"></label>
+                  </div>
+                  <div class="col-md-3 mb-2">
+                    <div class="form-group">
+                      <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
+                        <option value="Mr">Mr</option>
+                        <option value="Mme">Mme</option>
+                        <option value="Mlle">Mlle</option>
+                      </select>
+                      <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
+                      <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
+                      <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                    </div>
+                  </div>
+                  <div class="col-md d-flex mb-2">
+                    <span class="fw-bold d-flex">adulte</span>
+                    <input name="age_1_1_1" type="hidden" value="30">
+                  </div>
+                </div>
+              {{/for}}
+              {{#for this.children}}
+                <div class="row d-flex mb-3">
+                  <div class="col-1 align-self-center pr-1 mb-2">
+                    <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"></label>
+                  </div>
+                  <div class="col-md-3 mb-2">
+                    <div class="form-group">
+                      <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
+                        <option value="Mr">Mr</option>
+                        <option value="Mme">Mme</option>
+                        <option value="Mlle">Mlle</option>
+                      </select>
+                      <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
+                      <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-2">
+                    <div class="form-group">
+                      <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
+                      <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                    </div>
+                  </div>
+                  <div class="col-md d-flex mb-2">
+                    <span class="fw-bold d-flex">enf. {{math this "+" 1}}</span>
+                    <input name="age_1_1_1" type="hidden" value="30">
+                  </div>
+                </div>
+              {{/for}}
+            {{else}}
+            {{#for this.rooms}}
+                    <p class="mb-3 font-weight-600 fw-bold" style="color: #0b7a999a;">1 x {{../../this.name}} {{#each ../../this.rates}} <small><span class="text-warning"> {{../../this.boardName}}</span></small>  {{/each}} <span class="badge badge-warning">Sur demande</span>  </p>
+              {{#if ../this.adults.[0]}}
+                {{#for ../this.adults.[0]}}
+                  <div class="row d-flex mb-3">
+                    <div class="col-1 align-self-center pr-1 mb-2">
+                      <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"></label>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
+                          <option value="Mr">Mr</option>
+                          <option value="Mme">Mme</option>
+                          <option value="Mlle">Mlle</option>
+                        </select>
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md d-flex mb-2">
+                      <span class="fw-bold d-flex">adulte</span>
+                      <input name="age_1_1_1" type="hidden" value="30">
+                    </div>
+                  </div>
+                {{/for}}
+                {{#for ../this.children.[0]}}
+                  <div class="row d-flex mb-3">
+                    <div class="col-1 align-self-center pr-1 mb-2">
+                      <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"></label>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
+                          <option value="Mr">Mr</option>
+                          <option value="Mme">Mme</option>
+                          <option value="Mlle">Mlle</option>
+                        </select>
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md d-flex mb-2">
+                      <span class="fw-bold d-flex">enf. {{math this "+" 1}}</span>
+                      <input name="age_1_1_1" type="hidden" value="30">
+                    </div>
+                  </div>
+                {{/for}}
+              {{else}}
+                {{#for ../this.adults}}
+                  <div class="row d-flex mb-3">
+                    <div class="col-1 align-self-center pr-1 mb-2">
+                      <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"></label>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
+                          <option value="Mr">Mr</option>
+                          <option value="Mme">Mme</option>
+                          <option value="Mlle">Mlle</option>
+                        </select>
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md d-flex mb-2">
+                      <span class="fw-bold d-flex">adulte</span>
+                      <input name="age_1_1_1" type="hidden" value="30">
+                    </div>
+                  </div>
+                {{/for}}
+                {{#for ../this.children}}
+                  <div class="row d-flex mb-3">
+                    <div class="col-1 align-self-center pr-1 mb-2">
+                      <label class="font-16 d-flex fw-bold" style="color:#0b7a999a;"></label>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <select name="title_1_1_1" class="form-control border-dark" required="" data-fv-field="title_1_1_1">
+                          <option value="Mr">Mr</option>
+                          <option value="Mme">Mme</option>
+                          <option value="Mlle">Mlle</option>
+                        </select>
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="title_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="firstName_1_1_1" required="" name="firstName_1_1_1" placeholder="Prénom" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="firstName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="firstName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <div class="form-group">
+                        <input type="text" class="form-control border-dark" id="lastName_1_1_1" required="" name="lastName_1_1_1" placeholder="Nom de famille" minlength="2" maxlength="25" pattern="[A-Za-z ]" data-fv-field="lastName_1_1_1">
+                        <small class="help-block" data-fv-validator="notEmpty" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur</small><small class="help-block" data-fv-validator="regexp" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur correspondant au modèle</small><small class="help-block" data-fv-validator="stringLength" data-fv-for="lastName_1_1_1" data-fv-result="NOT_VALIDATED" style="display: none;">Veuillez fournir une valeur de longueur valide</small>
+                      </div>
+                    </div>
+                    <div class="col-md d-flex mb-2">
+                      <span class="fw-bold d-flex">enf. {{math this "+" 1}}</span>
+                      <input name="age_1_1_1" type="hidden" value="30">
+                    </div>
+                  </div>
+                {{/for}}
+              {{/if}}
+            {{/for}}
+            {{/ifCond}}
+          {{/each}}
         {{/each}}
       </div>
     </div>
@@ -227,10 +374,9 @@
           {{/each}}
           <hr>
           <div class="container">
-            <p class="text-danger fs-6">Non-refundable <i class="fas fa-info-circle"></i></p>
-            <p class="text-muted fs-6">Check-in : 12/12/2021</p>
-            <p class="text-muted fs-6">Check-out : 14/12/2021</p>
-            <p class="text-muted fs-6">2 nuitées</p>
+            <p class="text-muted fs-6">Check-in : {{data.checkIn}}</p>
+            <p class="text-muted fs-6">Check-out : {{data.checkOut}}</p>
+            <p class="text-muted fs-6">{{#ifCond data.nights 1}}{{data.nights}} nuitée{{else}}{{data.nights}} nuitées{{/ifCond}}</p>
           </div>
         </div>
       </div>
