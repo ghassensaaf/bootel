@@ -12,7 +12,7 @@ $(document).ready(function () {
     update();
   });
   // ***********************************update children select boxes***************************************************
-  $(document).on("change", ".children", function (e) {
+  $(document).on("input", ".children", function (e) {
     updateChildren(e);
   });
   // ***********************************update***************************************************

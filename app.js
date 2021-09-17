@@ -10,12 +10,15 @@ var indexRouter = require('./routes/index');
 var hotelsRouter = require('./routes/hotel');
 var checkoutRouter = require('./routes/checkout');
 var hbs = require('hbs');
+var ejs = require('ejs');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 app.set('view engine', 'hbs');
+
 hbs.registerHelper("setVar", function(varName, varValue, options) {
   options.data.root[varName] = varValue;
 });
@@ -66,7 +69,6 @@ app.use(cookieSession({
   httpOnly: true                                // cookie is not available to JavaScript (client)
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
 app.use('/hotels', hotelsRouter);
 app.use('/checkout',checkoutRouter);
