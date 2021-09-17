@@ -16,14 +16,24 @@ module.exports={
         return fetch(api_book_url, {
             method: 'POST',
             body: JSON.stringify(body),
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 
+                'Content-Type': 'application/json',
+                'apiKey' : process.env.API_KEY
+            },
+            
         });
     }
 };
 
 
 function createBooking(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder, rooms){
-    var rms=[];
+    var rateKey=[];
+    if(typeof(pensionId==="string")){
+        rateKey.push(pensionId);
+    }
+    else{
+        rateKey = pensionId;
+    }
     book={
         "holder": {
           "firstName": holder[0],
@@ -38,11 +48,10 @@ function createBooking(titles, firstnames, lastnames, ages, searchCode, pensionI
     };
     for(let i = 0; i < rooms; i++){
         var rm={
-            "rateKey" : pensionId[i],
+            "rateKey" : rateKey[i],
             "paxes" :[]
         };
-
-        for(let j = 0; j < titles.length ;j++)
+        for(let j = 0; j < titles[i].length ;j++)
         {
             if(ages[j]===30){
                 pax={
@@ -61,24 +70,20 @@ function createBooking(titles, firstnames, lastnames, ages, searchCode, pensionI
                     "title": titles[i][j]
                 };
             } 
-            rms.paxes.push(pax);
+            rm.paxes.push(pax);
         }
-        book.rooms.push(rms);
+        book.rooms.push(rm);
     }
-    console.log(hello);
-    console.log(book);
     return book;
 }
 
 function createBody(pensionId, searchCode){
-    console.log(searchCode);
     body={
         "apiKey"    :process.env.API_KEY,
         "rooms"     :[],
         "searchCode":searchCode,
         "langId"    :1
     };
-    console.log(pensionId);
     if(typeof(pensionId)==='string'){
         room={
             "rateKey":pensionId
@@ -91,7 +96,6 @@ function createBody(pensionId, searchCode){
         room={
             "rateKey":pensionId[i]
         };
-        console.log(room);
         body.rooms.push(room);
     }
     return body;
