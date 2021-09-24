@@ -68,6 +68,7 @@ app.use(cookieSession({
   secure: process.env.NODE_ENV === 'production',// cookie only sent on HTTPS
   httpOnly: true                                // cookie is not available to JavaScript (client)
 }));
+app.enable('trust proxy');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/hotels', hotelsRouter);
