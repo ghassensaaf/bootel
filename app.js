@@ -61,7 +61,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cookieSession({
   name: 'session',                              // name of the cookie
-  secret: 'MAKE_THIS_SECRET_SECURE',            // key to encode session
+  secret: process.env.COOKIE_SECRET,            // key to encode session
   maxAge: 24 * 60 * 60 * 1000,                  // cookie's lifespan
   sameSite: 'lax',                              // controls when cookies are sent
   path: '/',                                    // explicitly set this for security purposes
