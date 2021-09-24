@@ -1,6 +1,7 @@
 // import hotelModel, { hotelApiFilters } from '../models/hotel-model';
 var hotelModel=require('../models/hotel-model');
 var { randomBytes } = require('crypto');
+const fetch = require('node-fetch');
 module.exports = {
     hotelsPage:function(req, res, next) {
         if (req.session.csrf === undefined) {
@@ -9,7 +10,30 @@ module.exports = {
         res.render('hotels', { title: 'Bootel | Hotels Search Results', layout :'layouts/main', token : req.session.csrf});
     },
     getHotels:async function(req, res, nx){
+        if (req.session.searchHistory === undefined) {
+            req.session.searchHistory = [];
+        }
+        
         try {
+            
+            var search = {
+                "cityId"    : req.params.cityId,
+                "checkIn"   : req.params.checkIn,
+                "checkOut"  : req.params.checkOut,
+                "pax"       : req.params.pax,
+                "hotelId"   : req.params.hId
+            }
+            if(req.session.searchHistory.indexOf(search)===-1){
+                if(req.session.searchHistory.length===5){
+                    req.session.searchHistory.pop();
+                    req.session.searchHistory.unshift(search);
+                }
+                else{
+                    req.session.searchHistory.unshift(search);
+                }
+            }
+            console.log(req.session.searchHistory);
+            console.log("hello");
             const hotels     = await hotelModel.hotelSearch(req.params.cityId, req.params.checkIn, req.params.checkOut, req.params.pax, req.params.hId);
             const hotelsJSON = await hotels.json();
             res.send(hotelsJSON);

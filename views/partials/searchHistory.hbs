@@ -1,0 +1,12 @@
+<div class="container px-4">
+    <h4 class="mb-3">Search History</h4>
+    <div class="row gx-5">
+        {{#each searchHistory}}
+        <div class="col-2 border border-dark rounded-3 mb-3 p-2 mx-2 bg-white" onclick="location.href='/hotels?cityId={{this.cityId}}&hotelId=&checkIn={{this.checkIn}}&checkOut={{this.checkOut}}&pax={{this.pax}}'" style="cursor: pointer;">
+            <h6 id="history-cityId{{this.cityId}}"><i class="fas fa-history"></i> CityId : {{this.cityId}}</h6>
+            <small>Check-in : {{this.checkIn}}</small> <br>
+            <small>Check-out : {{this.checkOut}}</small>
+        </div>
+        {{/each}}
+    </div>
+</div>
