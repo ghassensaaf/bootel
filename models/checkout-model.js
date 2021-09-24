@@ -43,7 +43,7 @@ function createBooking(titles, firstnames, lastnames, ages, searchCode, pensionI
         },
         "rooms": [
         ],
-        "apikey": process.env.API_KEY,
+        "apikey": "Hidden",
         "searchCode": searchCode,
         "langId": 1,
         "remark": remark
