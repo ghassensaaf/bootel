@@ -141,7 +141,6 @@ function initializeSE() {
     });
   // initialize rooms
   $(".travelers-btn").html("1 room, 2 adultes");
-  cop="ma";
   var pax = "2";
   var travelers = 2;
   $("#pax").val(pax);
@@ -156,7 +155,6 @@ function initializeSE() {
   });
   // initialize checkin/checkout dates
   var params = parseQueryString();
-  cop+="de by S";
   if (typeof params.checkIn !== "undefined" && typeof params.checkOut !== "undefined" && typeof params.cityId !== "undefined") {
     $("#checkIn").val(params.checkIn);
     $("#checkOut").val(params.checkOut);
@@ -189,7 +187,6 @@ function initializeSE() {
     start = mm + "/" + dd + "/" + yyyy;
     end = mmt + "/" + ddt + "/" + yyyyt;
   }
-  cop+="neakyTu";
   $("#dateRange").daterangepicker(
     {
       startDate: start,
@@ -200,7 +197,6 @@ function initializeSE() {
       $("#checkOut").val(end.format("YYYY-MM-DD"));
     }
   );
-  cop+="rtle";
 }
 // *******************************************************************************************************************
 function updateChildren(event) {

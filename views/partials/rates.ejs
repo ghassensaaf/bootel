@@ -175,7 +175,6 @@
           <% var rNum =1 %>
           <% data.hotel.rooms.forEach(room => { %>
             <% room.rates.forEach(rate => { %>
-              
               <% if (typeof(rate.childrenAges) === 'string'){ %> 
                 <% var chAges = rate.childrenAges.split('-')%>
               <% }else{ %>
@@ -183,10 +182,75 @@
               <% } %>  
               <% if(typeof (room.name.split(",")[1]) === 'string'){ %> 
                 <% for( let index = 0; index < room.name.split(",").length; index++ ) { %>
-                  <tr>
-                    <td class="p-2">1  x <%= room.name.split(",")[index] %> x <% if (data.nights>1) { %> <%= data.nights %> nuitées <% } else { %> <%= data.nights %> nuitée <% } %></td>
-                    <td class="p-2" align="right"><% if(index===room.name.split(",").length-1) {%> <%= rate.amount  %> <%= data.hotel.currency %> <% } else { %> ... <% } %>  </td>
-                  </tr>
+                  <p class="mb-3 font-weight-600 fw-bold" style="color: #0b7a999a;">
+                    <%= room.name.split(",")[index] %> <small><span class="text-warning"> <%=rate.boardName %> <% if(rate.availability === "A") {%> <span class="badge rounded-pill bg-success">Available</span> <% } %> <% if(rate.availability === "R") {%> <span class="badge rounded-pill bg-warning text-dark">On Request </span> <% } %><% if(rate.rateClass === "NRF") {%> <span class="badge rounded-pill bg-danger">Non Refundable </span> <% } %></span></small>
+                  </p>
+                  <input type="hidden" name="pensionId" value="<%= rate.rateKey  %> ">
+                  <% var adts=rate.adults.split(",") %>
+                  <% var chs=rate.children.split(",") %>
+                  <% var chAges=rate.childrenAges.split(',') %>
+                  <% var chsA=chAges[index].split("-") %>
+                  <% for( let index2 = 0; index2 < adts[index]; index2++ ) { %>
+                    <div class="row d-flex mb-3">
+                      <div class="col-1 align-self-center pr-1 mb-2">
+                        <label class="font-16 d-flex fw-bold" style="color: #0b7a999a;"></label>
+                      </div>
+                      <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                          <select name="title_<%= rNum %>" class="form-control border-dark" required="" data-fv-field="title_<%= rNum %>">
+                            <option value="Mr">Mr</option>
+                            <option value="Mme">Mme</option>
+                            <option value="Mlle">Mlle</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                          <input type="text" class="form-control border-dark" id="firstName_<%= rNum %>" required name="firstName_<%= rNum %>" placeholder="Prénom" minlength="2" maxlength="25"  />
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                          <input type="text" class="form-control border-dark" id="lastName_<%= rNum %>" required name="lastName_<%= rNum %>" placeholder="Nom de famille" minlength="2" maxlength="25" />
+                        </div>
+                      </div>
+                      <div class="col-md d-flex mb-2">
+                        <span class="fw-bold d-flex">adulte </span>
+                        <input name="age_<%= rNum %>" type="hidden" value="30" />
+                      </div>
+                    </div>
+                  <% } %>
+                  <% for( let index2 = 0; index2 < chs[index]; index2++ ) { %>
+                    <div class="row d-flex mb-3">
+                      <div class="col-1 align-self-center pr-1 mb-2">
+                        <label class="font-16 d-flex fw-bold" style="color: #0b7a999a;"></label>
+                      </div>
+                      <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                          <select name="title_<%= rNum %>" class="form-control border-dark" required="">
+                            <option value="Mr">Mr</option>
+                            <option value="Mme">Mme</option>
+                            <option value="Mlle">Mlle</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                          <input type="text" class="form-control border-dark" id="firstName_<%= rNum %>" required name="firstName_<%= rNum %>" placeholder="Prénom" minlength="2" maxlength="25"  />
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-2">
+                        <div class="form-group">
+                          <input type="text" class="form-control border-dark" id="lastName_<%= rNum %>" required name="lastName_<%= rNum %>" placeholder="Nom de famille" minlength="2" maxlength="25" />
+                        </div>
+                      </div>
+                      <div class="col-md d-flex mb-2">
+                        <span class="fw-bold d-flex">enf. <%= chsA[index2] %> ans</span>
+                        <input name="age_<%= rNum %>" type="hidden" value="<%= chsA[index2] %>" />
+                      </div>
+                    </div>
+                  <% } %>
+                  <% rNum+=1 %>
                 <% } %>
                 <% if (rate.taxes.length>0){taxes = taxes + rate.taxes[0].amount} %> 
               <% } else { %>

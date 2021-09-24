@@ -1,97 +1,65 @@
 
 function filter(searchCode,total)
 {
-    slider = document.getElementById("price-range");
-    output = document.getElementById("output");    
-    output.innerHTML = slider.value;
-    pages=Math.ceil(total/10);
+  slider = document.getElementById("price-range");
+  output = document.getElementById("output");    
+  output.innerHTML = slider.value;
+  pages  =Math.ceil(total/10);
+  currentPage=1;
+  if(currentPage>=pages){
+    $('#show-more').hide();
+  }
+  $('.update').on('change', '', function() {
     currentPage=1;
-    if(currentPage>=pages){
-      $('#show-more').hide();
-    }
-    $('.update').on('change', '', function() {
-        currentPage=1;
-        sort=$("#sort-select option:selected").val();
-        rating =[];
-        board =[];
-        theme =[];
-        output.innerHTML = slider.value;
-        $.each($("input[name='rating']:checked"), function() {
-            rating.push($(this).val());
+    var data3 = {};
+    $.ajax({
+      type:'GET',
+      url:'/hotels/api/FiltredRes/'+getCurrentFilters(currentPage,slider.value,searchCode),
+      data:data3,
+      success:function(json){   
+        $(function() {
+          $('.lazy').lazy();
         });
-        $.each($("input[name='board']:checked"), function() {
-            board.push($(this).val());
-        });
-        $.each($("input[name='theme']:checked"), function() {
-            theme.push($(this).val());
-        });
-        if (rating.length==0){rating='x';}
-        if (board.length==0){board='x';}
-        if (theme.length==0){theme='x';}
-        var data3 = {};
-        $.ajax({
-            type:'GET',
-            url:'/hotels/api/FiltredRes/'+searchCode+'/'+currentPage+'/'+slider.value+'/'+rating+'/'+board+'/'+theme+'/'+sort,
-            data:data3,
-            success:function(json){   
-              $(function() {
-                $('.lazy').lazy();
-              });
-              renderHotels(json.hotels,json.searchCode);
-              filterRooms();
-              $('#resultCount').html(json.total + ' Hotels à '+json.hotels[0].city);
-              pages=Math.ceil(json.total/10);
-              if(currentPage>=pages){
-                $('#show-more').hide();
-              }
-              else{
-                $('#show-more').show();
-              }
-            },
-            error:function(){
-              console.log('error');
-            }        
-          });
-    });
-    $('#show-more').on('click', '', function() {
-        currentPage+=1;
+        renderHotels(json.hotels,json.searchCode);
+        filterRooms();
+        $('#resultCount').html(json.total + ' Hotels à '+json.hotels[0].city);
+        pages=Math.ceil(json.total/10);
         if(currentPage>=pages){
           $('#show-more').hide();
         }
-        sort=$("#sort-select option:selected").val();
-        rating =[];
-        board =[];
-        theme =[];
-        output.innerHTML = slider.value;
-        $.each($("input[name='rating']:checked"), function() {
-            rating.push($(this).val());
-        });
-        $.each($("input[name='board']:checked"), function() {
-            board.push($(this).val());
-        });
-        $.each($("input[name='theme']:checked"), function() {
-            theme.push($(this).val());
-        });
-        if (rating.length==0){rating='x';}
-        if (board.length==0){board='x';}
-        if (theme.length==0){theme='x';}
-        var data4 = {};
-        $.ajax({
-          type:'GET',
-          url:'/hotels/api/FiltredRes/'+searchCode+'/'+currentPage+'/'+slider.value+'/'+rating+'/'+board+'/'+theme+'/'+sort,
-          data:data4,
-          success:function(json){   
-            $(function() {
-              $('.lazy').lazy();
-            });
-            showMoreHotels(json.hotels,json.searchCode);
-            filterRooms();
-          },
-          error:function(){
-            console.log('error');
-          }        
-        });
+        else{
+          $('#show-more').show();
+        }
+      },
+      error:function(){
+        console.log('error');
+      }        
     });
+  });
+  $('#show-more').on('click', '', function() {
+    $('#show-more').prop('disabled', true);
+    currentPage+=1;
+    if(currentPage>=pages){
+      $('#show-more').hide();
+    }
+    var data4 = {};
+    $.ajax({
+      type:'GET',
+      url:'/hotels/api/FiltredRes/'+getCurrentFilters(currentPage,slider.value,searchCode),
+      data:data4,
+      success:function(json){   
+        $(function() {
+          $('.lazy').lazy();
+        });
+        showMoreHotels(json.hotels,json.searchCode);
+        filterRooms();
+        $('#show-more').prop('disabled', false);
+      },
+      error:function(){
+        console.log('error');
+      }        
+    });
+  });
 }
 function filterRooms(){
   $('.room-filter').on('change', '', function() {
@@ -121,4 +89,24 @@ function showRooms(btn){
     $(pic).css("border-bottom-left-radius", "1.5rem");
   }
   $(rooms).slideToggle();
+}
+function getCurrentFilters(currentPage, sliderValue, searchCode){
+  var sort = $("#sort-select option:selected").val();
+  var rating = [];
+  var board = [];
+  var theme = [];
+  output.innerHTML = sliderValue;
+  $.each($("input[name='rating']:checked"), function() {
+      rating.push($(this).val());
+  });
+  $.each($("input[name='board']:checked"), function() {
+      board.push($(this).val());
+  });
+  $.each($("input[name='theme']:checked"), function() {
+      theme.push($(this).val());
+  });
+  if (rating.length==0){rating='x';}
+  if (board.length==0){board='x';}
+  if (theme.length==0){theme='x';}
+  return searchCode+'/'+currentPage+'/'+sliderValue+'/'+rating+'/'+board+'/'+theme+'/'+sort;
 }

@@ -15,24 +15,45 @@
       <section class="p-3" id="filters" >
         <h5>Filters</h5>
         <!-- Section: Price  -->
-        <section id="price-filter" class="mb-4"></section>
+        <section id="price-filter" class="mb-4">
+          <h6 class="font-weight-bold mb-3">Price</h6>
+          <h6 class="loading w-75"></h6>
+        </section>
         <!-- Section: Price  -->
         <!-- Section: rating -->
         <section class="mb-4">
           <h6 class="font-weight-bold mb-3">Rating</h6>
-          <div id="rating-filter"></div>
+          <div id="rating-filter">
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+          </div>
         </section>
         <!-- Section: rating -->
         <!-- Section: Boards -->
         <section class="mb-4">
           <h6 class="font-weight-bold mb-3">Boards</h6>
-          <div id="board-filter"></div>
+          <div id="board-filter">
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+          </div>
         </section>
         <!-- Section: Boards -->
         <!-- Section: Themes -->
         <section class="mb-4">
           <h6 class="font-weight-bold mb-3">Themes</h6>
-          <div id="theme-filter"></div>
+          <div id="theme-filter">
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+          </div>
         </section>
         <!-- Section: Themes -->
       </section>
@@ -91,7 +112,171 @@
         --}}
         <!-- Loader -->
         <!-- Grid row -->
-        <div class="" id="products"></div>
+        <div class="" id="products">
+          <div class="card mt-3 shadow-sm hotel" >
+            <div class="row no-gutters">
+                <div class="col-md-12 col-lg-4">
+                  <figure class="card-img loading"></figure>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="card-body">
+                        <h5 class="card-title loading w-50"></h5>
+                        <p class="h-rating loading w-25 mb-2"></p>
+                        <p class="h-adress loading w-75"> </p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-7 col-sm-12">
+                                <p class="card-text text-success loading mb-2"></p>
+                                <p class="card-text text-success loading mb-2 w-75"></p>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12">
+                                <div class="card-side card-body">
+                                    <h5 class="card-price loading"></h5>
+                                    <button class="btn btn-outline-warning loading" id="${hotel.hotelId}-showB" onclick="showRooms(this)"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div> 
+          <div class="card mt-3 shadow-sm hotel" >
+            <div class="row no-gutters">
+                <div class="col-md-12 col-lg-4">
+                  <figure class="card-img loading"></figure>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="card-body">
+                        <h5 class="card-title loading w-50"></h5>
+                        <p class="h-rating loading w-25 mb-2"></p>
+                        <p class="h-adress loading w-75"> </p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-7 col-sm-12">
+                                <p class="card-text text-success loading mb-2"></p>
+                                <p class="card-text text-success loading mb-2 w-75"></p>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12">
+                                <div class="card-side card-body">
+                                    <h5 class="card-price loading"></h5>
+                                    <button class="btn btn-outline-warning loading" id="${hotel.hotelId}-showB" onclick="showRooms(this)"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div> 
+          <div class="card mt-3 shadow-sm hotel" >
+            <div class="row no-gutters">
+                <div class="col-md-12 col-lg-4">
+                  <figure class="card-img loading"></figure>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="card-body">
+                        <h5 class="card-title loading w-50"></h5>
+                        <p class="h-rating loading w-25 mb-2"></p>
+                        <p class="h-adress loading w-75"> </p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-7 col-sm-12">
+                                <p class="card-text text-success loading mb-2"></p>
+                                <p class="card-text text-success loading mb-2 w-75"></p>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12">
+                                <div class="card-side card-body">
+                                    <h5 class="card-price loading"></h5>
+                                    <button class="btn btn-outline-warning loading" id="${hotel.hotelId}-showB" onclick="showRooms(this)"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div> 
+          <div class="card mt-3 shadow-sm hotel" >
+            <div class="row no-gutters">
+                <div class="col-md-12 col-lg-4">
+                  <figure class="card-img loading"></figure>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="card-body">
+                        <h5 class="card-title loading w-50"></h5>
+                        <p class="h-rating loading w-25 mb-2"></p>
+                        <p class="h-adress loading w-75"> </p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-7 col-sm-12">
+                                <p class="card-text text-success loading mb-2"></p>
+                                <p class="card-text text-success loading mb-2 w-75"></p>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12">
+                                <div class="card-side card-body">
+                                    <h5 class="card-price loading"></h5>
+                                    <button class="btn btn-outline-warning loading" id="${hotel.hotelId}-showB" onclick="showRooms(this)"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div> 
+          <div class="card mt-3 shadow-sm hotel" >
+            <div class="row no-gutters">
+                <div class="col-md-12 col-lg-4">
+                  <figure class="card-img loading"></figure>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="card-body">
+                        <h5 class="card-title loading w-50"></h5>
+                        <p class="h-rating loading w-25 mb-2"></p>
+                        <p class="h-adress loading w-75"> </p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-7 col-sm-12">
+                                <p class="card-text text-success loading mb-2"></p>
+                                <p class="card-text text-success loading mb-2 w-75"></p>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12">
+                                <div class="card-side card-body">
+                                    <h5 class="card-price loading"></h5>
+                                    <button class="btn btn-outline-warning loading" id="${hotel.hotelId}-showB" onclick="showRooms(this)"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div> 
+          <div class="card mt-3 shadow-sm hotel" >
+            <div class="row no-gutters">
+                <div class="col-md-12 col-lg-4">
+                  <figure class="card-img loading"></figure>
+                </div>
+                <div class="col-md-12 col-lg-8">
+                    <div class="card-body">
+                        <h5 class="card-title loading w-50"></h5>
+                        <p class="h-rating loading w-25 mb-2"></p>
+                        <p class="h-adress loading w-75"> </p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-7 col-sm-12">
+                                <p class="card-text text-success loading mb-2"></p>
+                                <p class="card-text text-success loading mb-2 w-75"></p>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12">
+                                <div class="card-side card-body">
+                                    <h5 class="card-price loading"></h5>
+                                    <button class="btn btn-outline-warning loading" id="${hotel.hotelId}-showB" onclick="showRooms(this)"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div> 
+
+        </div>
         <div class="justify-content-center row mt-3">
           <div class="col-2">
             <button class="btn btn-outline-info mx-auto form-control" id="show-more">Show More</button>

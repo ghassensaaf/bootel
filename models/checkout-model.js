@@ -11,24 +11,26 @@ module.exports={
         });
     },
     book: function(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder, rooms){
-        api_book_url = 'http://api-test.boosterbc.com/rest/hotels-v4/book';
+        api_book_url = 'http://api-test.boosterbc.com/rest/hotels-v3/book';
         body = createBooking(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder,rooms);
-        return fetch(api_book_url, {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: { 
-                'Content-Type': 'application/json',
-                'apiKey' : process.env.API_KEY
-            },
+        
+        // return fetch(api_book_url, {
+        //     method: 'POST',
+        //     body: JSON.stringify(body),
+        //     headers: { 
+        //         'Content-Type': 'application/json',
+        //         'apiKey' : process.env.API_KEY
+        //     },
             
-        });
+        // });
+        return body;
     }
 };
 
 
 function createBooking(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder, rooms){
     var rateKey=[];
-    if(typeof(pensionId==="string")){
+    if(pensionId.length>8){
         rateKey.push(pensionId);
     }
     else{
@@ -36,8 +38,8 @@ function createBooking(titles, firstnames, lastnames, ages, searchCode, pensionI
     }
     book={
         "holder": {
-          "firstName": holder[0],
-          "lastName": holder[1]
+          "firstName": holder.firstname,
+          "lastName": holder.lastname
         },
         "rooms": [
         ],
@@ -53,7 +55,7 @@ function createBooking(titles, firstnames, lastnames, ages, searchCode, pensionI
         };
         for(let j = 0; j < titles[i].length ;j++)
         {
-            if(ages[j]===30){
+            if(ages[i][j]==='30'){
                 pax={
                     "firstName": firstnames[i][j],
                     "lastName": lastnames[i][j],
