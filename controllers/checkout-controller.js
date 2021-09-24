@@ -1,6 +1,5 @@
 // import hotelModel, { hotelApiFilters } from '../models/hotel-model';
 var checkoutModel=require('../models/checkout-model');
-var { randomBytes } = require('crypto');
 module.exports = {
     checkoutPage:function(req, res, next) {
         pensionId=req.body.pensionId;
@@ -21,10 +20,9 @@ module.exports = {
         }
         else
         {
+            
             try {
-                const rates     = await checkoutModel.checkRate(pensionId, searchCode);
-                const ratesJSON = await rates.json();
-                res.render('partials/rates.ejs',{data: ratesJSON, pic: hotelPic});
+                res.send('<h3>invalid request</h3>');
             } catch (error) {
                 res.send(error);
             }

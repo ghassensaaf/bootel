@@ -63,7 +63,7 @@ app.use(cookieSession({
   name: 'session',                              // name of the cookie
   secret: 'MAKE_THIS_SECRET_SECURE',            // key to encode session
   maxAge: 24 * 60 * 60 * 1000,                  // cookie's lifespan
-  sameSite: 'lax',                              // controls when cookies are sent
+  sameSite: 'none',                              // controls when cookies are sent
   path: '/',                                    // explicitly set this for security purposes
   secure: process.env.NODE_ENV === 'production',// cookie only sent on HTTPS
   httpOnly: true                                // cookie is not available to JavaScript (client)
