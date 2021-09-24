@@ -24,7 +24,7 @@ module.exports = {
                 "hotelId"   : req.params.hId
             }
             if(req.session.searchHistory.indexOf(search)===-1){
-                if(req.session.searchHistory.length===5){
+                if(req.session.searchHistory.length===4){
                     req.session.searchHistory.pop();
                     req.session.searchHistory.unshift(search);
                 }
