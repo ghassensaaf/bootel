@@ -10,22 +10,25 @@
                 <p class="h-rating">${rating}</p>
                 <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}</p>
                 <hr>
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col-lg-8 col-md-7 col-sm-12">
                         <p class="card-text text-success">${hotel.marketingText}</p>
                     </div>
                     <div class="col-lg-4 col-md-5 col-sm-12">
-                        <div class="card-side card-body">
+                        <div class="card-text">
                             <h5 class="card-price">à partir de ${hotel.minRate} ${hotel.currency}</h5>
-                            <button class="btn btn-outline-warning" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Show Rooms</button>
+                            
                         </div>
                     </div>
+                </div>
+                <div class="row p-2">
+                    <button class="btn btn-outline-warning form-control" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Chambre et Tarifs <i class="fas fa-chevron-down"></i></button>
                 </div>
             </div>
             
         </div>
     </div>
-    <div id="${hotel.hotelId}-hotelRooms" class="container py-2" style="display: none;" >
+    <div id="${hotel.hotelId}-hotelRooms" class="container p-4 " style="display: none;" >
         <div class="">
             <div class="row">
                 <div class="col card-body">

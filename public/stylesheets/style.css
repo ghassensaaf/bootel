@@ -63,7 +63,7 @@ body
   border-color: white;
 }
 .room-card{
-  background-color: #fbe7c686;
+  background-color: #fbe7c64b;
 }
 /* ----------------------------------------------------------------------------- */
 /* ------------------------------type ahead--------------------------------- */
@@ -195,4 +195,14 @@ button.loading{
   height: 2rem;
   width: 100%;
   background-color: #ffc107;
+}
+
+
+@media (max-width: 992px) { 
+  .card-img{
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }

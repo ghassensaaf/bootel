@@ -22,6 +22,7 @@ function filter(searchCode,total)
         });
         renderHotels(json.hotels,json.searchCode);
         filterRooms();
+        selectRoom();
         $('#resultCount').html(json.total + ' Hotels à '+json.hotels[0].city);
         pages=Math.ceil(json.total/10);
         if(currentPage>=pages){
@@ -53,6 +54,7 @@ function filter(searchCode,total)
         });
         showMoreHotels(json.hotels,json.searchCode);
         filterRooms();
+        selectRoom();
         $('#show-more').prop('disabled', false);
       },
       error:function(){
@@ -65,10 +67,22 @@ function filterRooms(){
   $('.room-filter').on('change', '', function() {
     var hotelID=this.id.substr(0, this.id.indexOf('-'));
     var hotelRoom='.room-'+hotelID+"[data-group";
+    var rooms = $('.room-select')
     if (this.dataset.set == "all") {
       $(hotelRoom+']').show();
       return false;
     }
+    console.log("hhhhhh");
+    console.log($(rooms[0]).is(":checked"))
+    console.log("hhhhhh");
+    rooms.each(function( index ) {
+      var room= rooms[index]
+      if($(room).is(":checked")){
+        $(room).prop( "checked", false );
+        $(room).parent().parent().toggleClass("border border-primary border-3");
+        // $(rooms[index]).prop('checked', false);
+      }
+    });
     var $currentLists = $(hotelRoom +'='+ this.dataset.set + "]");
     testtt=$(hotelRoom+']').not($currentLists).hide();
     $currentLists.show();
@@ -80,13 +94,17 @@ function showRooms(btn){
   var pic='#'+hotelID+'-pic';
   
   if($(rooms).is(":hidden")){
-    $('#'+btn.id).html("hide rooms");
-    $(pic).css("border-bottom-left-radius", "0");
+    $('#'+btn.id).html('Chambre et Tarifs <i class="fas fa-chevron-up"></i>');
+    if($(document).width()>=992){
+      $(pic).css("border-bottom-left-radius", "0");
+    }
   }
   else
   {
-    $('#'+btn.id).html("show rooms");
+    $('#'+btn.id).html('Chambre et Tarifs <i class="fas fa-chevron-down"></i>');
+    if($(document).width()>=992){
     $(pic).css("border-bottom-left-radius", "1.5rem");
+    }
   }
   $(rooms).slideToggle();
 }
@@ -109,4 +127,10 @@ function getCurrentFilters(currentPage, sliderValue, searchCode){
   if (board.length==0){board='x';}
   if (theme.length==0){theme='x';}
   return searchCode+'/'+currentPage+'/'+sliderValue+'/'+rating+'/'+board+'/'+theme+'/'+sort;
+}
+function selectRoom(){
+  $('.room-card').on('change', 'input[type=checkbox]', function() {
+    var parent= $(this).parent().parent()
+    $(parent).toggleClass("border border-primary border-3");
+  });
 }

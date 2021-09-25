@@ -53,6 +53,7 @@ function getHotels() {
       renderHotels(json.hotels,searchCode);
       total=json.total;
       filterRooms();
+      selectRoom();
       $('#resultCount').html(total + ' Hotels à '+json.hotels[0].city);
       filterUrl='hotels/api/Filter/'+searchCode;
       $.get(
@@ -60,7 +61,6 @@ function getHotels() {
         (json) => {
           renderFilters(json);
           filter(searchCode,total);
-          filterRooms();
         }
       )
       .fail(() => {
