@@ -15,25 +15,7 @@ module.exports = {
         }
         
         try {
-            
-            var search = {
-                "cityId"    : req.params.cityId,
-                "checkIn"   : req.params.checkIn,
-                "checkOut"  : req.params.checkOut,
-                "pax"       : req.params.pax,
-                "hotelId"   : req.params.hId
-            }
-            if(req.session.searchHistory.indexOf(search)===-1){
-                if(req.session.searchHistory.length===4){
-                    req.session.searchHistory.pop();
-                    req.session.searchHistory.unshift(search);
-                }
-                else{
-                    req.session.searchHistory.unshift(search);
-                }
-            }
-            console.log(req.session.searchHistory);
-            console.log("hello");
+            updateSearchHistory(req);
             const hotels     = await hotelModel.hotelSearch(req.params.cityId, req.params.checkIn, req.params.checkOut, req.params.pax, req.params.hId);
             const hotelsJSON = await hotels.json();
             res.send(hotelsJSON);
@@ -60,3 +42,27 @@ module.exports = {
         }
     }
 };
+function updateSearchHistory(req){
+    var search = {
+        "cityId"    : req.params.cityId,
+        "checkIn"   : req.params.checkIn,
+        "checkOut"  : req.params.checkOut,
+        "pax"       : req.params.pax,
+        "hotelId"   : req.params.hId,
+        "code"      : req.params.cityId + req.params.checkIn + req.params.checkOut + req.params.pax + req.params.hId
+    }
+    if(req.session.searchHistory.findIndex(o => o.code === search.code) === -1 ){
+        if(req.session.searchHistory.length===4){
+            req.session.searchHistory.pop();
+            req.session.searchHistory.unshift(search);
+        }
+        else{
+            req.session.searchHistory.unshift(search);
+        }
+    }
+    else{
+        let index = req.session.searchHistory.findIndex(o => o.code === search.code);
+        req.session.searchHistory.splice(index, 1);;
+        req.session.searchHistory.unshift(search);
+    }
+}
