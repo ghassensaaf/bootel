@@ -13,17 +13,14 @@ module.exports={
     book: function(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder, rooms){
         api_book_url = 'http://api-test.boosterbc.com/rest/hotels-v3/book';
         body = createBooking(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder,rooms);
-        
-        // return fetch(api_book_url, {
-        //     method: 'POST',
-        //     body: JSON.stringify(body),
-        //     headers: { 
-        //         'Content-Type': 'application/json',
-        //         'apiKey' : process.env.API_KEY
-        //     },
-            
-        // });
-        return body;
+        return fetch(api_book_url, {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: { 
+                'Content-Type': 'application/json',
+                'apiKey' : process.env.API_KEY
+            },
+        });
     }
 };
 

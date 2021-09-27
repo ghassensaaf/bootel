@@ -56,12 +56,9 @@ module.exports = {
         }
         
         try {
-            // const book = await checkoutModel.book(titles, firstnames, lastnames, ages, req.body.searchCode, req.body.pensionId, req.body.message, holder, req.body.rooms);
-            // const bookJSON = await book.json();
-            // res.send(bookJSON);
-            var val=checkoutModel.book(titles, firstnames, lastnames, ages, req.body.searchCode, req.body.pensionId, req.body.message, holder, req.body.rooms);
-            val.apikey="hidden";
-            res.send(val);
+            const book = await checkoutModel.book(titles, firstnames, lastnames, ages, req.body.searchCode, req.body.pensionId, req.body.message, holder, req.body.rooms);
+            const bookJSON = await book.json();
+            res.send(bookJSON);
         } catch (error) {
             res.send(error);
         }        
