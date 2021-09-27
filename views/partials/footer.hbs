@@ -51,6 +51,9 @@
           }
         }
         rooms+=`<div class="row py-2 mt-3 rounded shadow-sm room-card room-${hotel.hotelId} align-items-center"  data-group="${rate.boardCode}">
+                  <div class="col-lg-1 col-md-4" style="height: 100%; border-right:1px dashed #33333350">
+                    <input type="checkbox" name="pensionId" class="room-select" value='${rate.rateKey}'>
+                  </div>
                   <div class="col-lg-4 col-md-12" style="border-right:1px dashed #33333350">
                     <h6>${rate.rooms}x ${room.name}</h6>
                     <p class="fs-6 text-muted"><i class="fas fa-users"></i> ${occupants}</p>
@@ -61,14 +64,10 @@
                     <p mb-1<span class="badge rounded-pill bg-danger">Non Remboursable</span></p>
                     <p class="text-success fw-bold"><small style="font-size:.75rem;">${minCancelDate}</small></p>
                   </div>
-                  <div class="col-lg-2 col-md-4" style="border-right:1px dashed #33333350">
+                  <div class="col-lg-3 col-md-4" >
                     <h6 class="text-decoration-line-through">${oldRate}</h6>
                     <h6>${rate.amount} DT</h6>
                     <p>prix total 2 nuitées</p>
-                  </div>
-                  <div class="col">
-                    <input type="checkbox" name="pensionId" class="room-select" id="${rate.rateKey}" value='${rate.rateKey}'>
-                    <label for="${rate.rateKey}"><small>Selectionnez</small></label>
                   </div>
                 </div>`
         });
