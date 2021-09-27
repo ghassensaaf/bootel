@@ -11,6 +11,7 @@
         roomTypes.push({id:rate.boardCode,board:rate.boardName})
         oldRate=''
         minCancelDate=''
+        var rateClass='';
         if(typeof(rate.cancellationPolicies[0])!=='undefined')
         {
           minCancelDate='annulation gratuite avant le  '+rate.cancellationPolicies[0].from;
@@ -39,16 +40,16 @@
             occupants+=', '+ rate.children +' enfants';
           }
         }
-        if(rate.infant !== 0)
-        {
-          if(rate.infant===1)
-          {
+        if(rate.infant !== 0){
+          if(rate.infant===1){
             occupants+=', '+ rate.infant +' bébé';
           }
-          else
-          {
+          else{
             occupants+=', '+ rate.infant +' bébés';
           }
+        }
+        if(rate.rateClass=="NRF"){
+          rateClass = `<p class="mb-1"><span class="badge rounded-pill bg-danger">Non Remboursable</span></p>`
         }
         rooms+=`<div class="row py-2 mt-3 rounded shadow-sm room-card room-${hotel.hotelId} align-items-center"  data-group="${rate.boardCode}">
                   <div class="col-lg-1 col-md-4" style="height: 100%; border-right:1px dashed #33333350">
@@ -61,7 +62,7 @@
                   </div>
                   <div class="col-lg-4 col-md-8" style="border-right:1px dashed #33333350">
                     <h6>${rate.boardName}</h6>
-                    <p mb-1<span class="badge rounded-pill bg-danger">Non Remboursable</span></p>
+                    ${rateClass}
                     <p class="text-success fw-bold"><small style="font-size:.75rem;">${minCancelDate}</small></p>
                   </div>
                   <div class="col-lg-3 col-md-4" >
