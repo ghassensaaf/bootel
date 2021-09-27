@@ -191,6 +191,7 @@ function initializeSE() {
     {
       startDate: start,
       endDate: end,
+      minDate: new Date()
     },
     function (start, end, label) {
       $("#checkIn").val(start.format("YYYY-MM-DD"));
