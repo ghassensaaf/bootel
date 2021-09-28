@@ -134,9 +134,11 @@ function initializeSE() {
     .bind("typeahead:selected", function (obj, datum) {
       if (datum.type == "H") {
         $("#cityId").val(datum.cityId);
+        $("#city").val(datum.name);
         $("#hotelId").val(datum.id);
       } else {
         $("#cityId").val(datum.id);
+        $("#city").val(datum.name);
       }
     });
   // initialize rooms

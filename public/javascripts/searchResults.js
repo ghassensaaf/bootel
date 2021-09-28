@@ -41,7 +41,7 @@ function getHotels() {
   {
     params.hotelId='x';
   }
-  var url ='hotels/api/Search/'+params.cityId+'/'+params.checkIn+'/'+params.checkOut+'/'+params.pax+'/'+params.hotelId;
+  var url ='hotels/api/Search/'+params.cityId+'/'+params.checkIn+'/'+params.checkOut+'/'+params.pax+'/'+params.hotelId+'/'+params.city;
   console.log(params);
   $.get(
     url,

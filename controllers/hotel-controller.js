@@ -45,11 +45,12 @@ module.exports = {
 function updateSearchHistory(req){
     var search = {
         "cityId"    : req.params.cityId,
+        "city"      : req.params.city,
         "checkIn"   : req.params.checkIn,
         "checkOut"  : req.params.checkOut,
         "pax"       : req.params.pax,
         "hotelId"   : req.params.hId,
-        "code"      : req.params.cityId + req.params.checkIn + req.params.checkOut + req.params.pax + req.params.hId
+        "code"      : req.params.cityId + req.params.city + req.params.checkIn + req.params.checkOut + req.params.pax + req.params.hId
     }
     if(req.session.searchHistory.findIndex(o => o.code === search.code) === -1 ){
         if(req.session.searchHistory.length===4){
@@ -65,4 +66,5 @@ function updateSearchHistory(req){
         req.session.searchHistory.splice(index, 1);;
         req.session.searchHistory.unshift(search);
     }
+    
 }
