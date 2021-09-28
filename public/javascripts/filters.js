@@ -143,3 +143,15 @@ function selectRoom(){
     $(parent).toggleClass("border-primary border-3");
   });
 }
+function reservationValidate(form){
+  var id=$(form).attr('id')
+  console.log(id);
+  if($('#'+id+' input[type=checkbox]:checked').length==0){
+    alert("select at least 1 room")
+    return false;
+  }
+  else{
+    return true;
+  }
+
+}

@@ -35,7 +35,7 @@
                 ${roomFilters}
             </div>
             <div  class="rooms" >
-                <form action="/checkout" method="post">
+                <form id="form-${hotel.hotelId}" action="/checkout" method="post" onsubmit="return reservationValidate(this);">
                     ${rooms}
                     <input type="hidden" name="hotelPic" value="${hotel.photos[0]}">
                     <input type="hidden" name="csrf" value="{{token}}">
@@ -43,7 +43,7 @@
                     <div class="container p-0">
                         <div class="row p-2 mt-3 border rounded shadow room-card room-${hotel.hotelId} align-items-center justify-content-between">
                             <h5 class="col-4 mt-auto mb-auto" id="total-${hotel.hotelId}">Total : 00.00 TND</h5>
-                            <button class="btn btn-outline-primary col-4" type="submit">Reservez maintenant</button>
+                            <button id="resa-${hotel.hotelId}" class="btn btn-outline-primary col-4" type="submit">Reservez maintenant</button>
                         </div>
                     </div>
                 </form>
