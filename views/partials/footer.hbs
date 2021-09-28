@@ -10,11 +10,12 @@
       $.each(room.rates, function(index, rate) {
         roomTypes.push({id:rate.boardCode,board:rate.boardName})
         oldRate=''
-        minCancelDate=''
+        minCancelDate='';
         var rateClass='';
+        var availability='';
         if(typeof(rate.cancellationPolicies[0])!=='undefined')
         {
-          minCancelDate='annulation gratuite avant le  '+rate.cancellationPolicies[0].from;
+          minCancelDate='annulation gratuite avant le  '+ (parseInt(rate.cancellationPolicies[0].from.split("T")[0].split("-")[2])+1)+'/'+rate.cancellationPolicies[0].from.split("T")[0].split("-")[1]+'/'+rate.cancellationPolicies[0].from.split("T")[0].split("-")[0];
         }
         if(typeof(rate.amountWithoutPromotion) !=='undefined')
         {
@@ -49,26 +50,35 @@
           }
         }
         if(rate.rateClass=="NRF"){
-          rateClass = `<p class="mb-1"><span class="badge rounded-pill bg-danger">Non Remboursable</span></p>`
+          rateClass = `<p class="mb-1"><span class="badge rounded-pill bg-danger"><small>Non Remboursable</small></span></p>`
         }
-        rooms+=`<div class="row py-2 mt-3 rounded shadow-sm room-card room-${hotel.hotelId} align-items-center"  data-group="${rate.boardCode}">
-                  <div class="col-lg-1 col-md-4" style="height: 100%; border-right:1px dashed #33333350">
-                    <input type="checkbox" name="pensionId" class="room-select" value='${rate.rateKey}'>
-                  </div>
+        if(rate.availability === "R"){
+          availability=`<div style="position:absolute;top:0;right:0;" class="badge bg-warning">Sur Demande</div>`
+        }
+        if(rate.availability === "A"){
+          availability=`<div style="position:absolute;top:0;right:0;" class="badge bg-primary">Disponible</div>`
+        }
+        rooms+=`<div style="position: relative;" class="row py-2 mt-3 border rounded shadow room-card room-${hotel.hotelId} align-items-center"  data-group="${rate.boardCode}">
                   <div class="col-lg-4 col-md-12" style="border-right:1px dashed #33333350">
                     <h6>${rate.rooms}x ${room.name}</h6>
-                    <p class="fs-6 text-muted"><i class="fas fa-users"></i> ${occupants}</p>
+                    <h6>${rate.boardName}</h6>
                     <p><a href="#">Details chambre</a></p>
                   </div>
-                  <div class="col-lg-4 col-md-8" style="border-right:1px dashed #33333350">
-                    <h6>${rate.boardName}</h6>
+                  <div class="col-lg-4 col-md-8 h-100" style="height: 100%; border-right:1px dashed #33333350">
+                    <p class="fs-6 text-muted mb-1"><i class="fas fa-users"></i> ${occupants}</p>
                     ${rateClass}
                     <p class="text-success fw-bold"><small style="font-size:.75rem;">${minCancelDate}</small></p>
                   </div>
-                  <div class="col-lg-3 col-md-4" >
-                    <h6 class="text-decoration-line-through">${oldRate}</h6>
-                    <h6>${rate.amount} DT</h6>
-                    <p>prix total 2 nuitées</p>
+                  <div class="col-lg-2 col-md-4" style="height: 100%; border-right:1px dashed #33333350">
+                    <h6 class="text-decoration-line-through text-end">${oldRate}</h6>
+                    <h6 class="text-end">${rate.amount} TND</h6>
+                    <p class="mb-0 text-end"><small>prix total </small></p>
+                    <p class="text-end"><small>2 nuitées</small></p>
+                  </div>
+                  <div class="col-lg-2 col-md-4">
+                    ${availability}
+                    <input type="checkbox" id="${rate.rateKey}" name="pensionId" class="room-select" value='${rate.rateKey}' price='${rate.amount}' >
+                    <label for="${rate.rateKey}">Selectionnez</label>
                   </div>
                 </div>`
         });
@@ -78,7 +88,7 @@
       roomFilters+=`
                     <div class="col-4 mb-2 px-1">
                       <input type="radio" class="btn-check room-filter" name="${hotel.hotelId}room-type" id="${hotel.hotelId}-${type.id}"  autocomplete="off" data-set="${type.id}" >
-                      <label class="btn btn-outline-secondary" style="height:100%; width:100%;" for="${hotel.hotelId}-${type.id}"> <small>${type.board}</small> </label><br>
+                      <label class="btn btn-outline-secondary border border-1 shadow-sm" style="height:100%; width:100%;" for="${hotel.hotelId}-${type.id}"> <small>${type.board}</small> </label><br>
                     </div>`;
     });
     stars=hotel.rating;

@@ -79,7 +79,7 @@ function filterRooms(){
       var room= rooms[index]
       if($(room).is(":checked")){
         $(room).prop( "checked", false );
-        $(room).parent().parent().toggleClass("border border-primary border-3");
+        $(room).parent().parent().toggleClass("border-primary border-3");
         // $(rooms[index]).prop('checked', false);
       }
     });
@@ -92,6 +92,7 @@ function showRooms(btn){
   var hotelID=btn.id.substr(0, btn.id.indexOf('-'));
   var rooms='#'+hotelID+'-hotelRooms';
   var pic='#'+hotelID+'-pic';
+  var showRoomsBtn='#showRooms-btn-'+hotelID
   
   if($(rooms).is(":hidden")){
     $('#'+btn.id).html('Chambre et Tarifs <i class="fas fa-chevron-up"></i>');
@@ -131,6 +132,14 @@ function getCurrentFilters(currentPage, sliderValue, searchCode){
 function selectRoom(){
   $('.room-card').on('change', 'input[type=checkbox]', function() {
     var parent= $(this).parent().parent()
-    $(parent).toggleClass("border border-primary border-3");
+    var hotel= $(this).parent().parent().parent().parent().parent().parent();
+    var hId= hotel.attr('id').split('-')[0];
+    var selectedRooms=$("#"+hotel.attr('id')+" .room-select:checked")
+    var total=0;
+    selectedRooms.each(function( index ){
+      total+=parseFloat(selectedRooms[index].getAttribute("price"))
+    });
+    $('#total-'+hId).html(`Total : ${total} TND`)
+    $(parent).toggleClass("border-primary border-3");
   });
 }

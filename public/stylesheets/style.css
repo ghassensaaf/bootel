@@ -44,12 +44,16 @@ body
 .card-text{
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.card-price{
-  font-size: 1rem;
+.h-adress{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
+
 .h-rating{
   margin:0px;
 }
@@ -62,8 +66,9 @@ body
   color: white;
   border-color: white;
 }
-.room-card{
-  background-color: #fbe7c64b;
+.card-price{
+  font-size: 1rem;
+
 }
 /* ----------------------------------------------------------------------------- */
 /* ------------------------------type ahead--------------------------------- */
@@ -194,12 +199,16 @@ p.loading{
 button.loading{
   height: 2rem;
   width: 100%;
-  background-color: #ffc107;
+  border: 2px solid   #ffc107;;
 }
 
 
 @media (max-width: 992px) { 
+  figure.loading{
+    height: 250px;
+  }
   .card-img{
+    height: 250px;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
     border-bottom-left-radius: 0;
