@@ -72,9 +72,7 @@ function filterRooms(){
       $(hotelRoom+']').show();
       return false;
     }
-    console.log("hhhhhh");
-    console.log($(rooms[0]).is(":checked"))
-    console.log("hhhhhh");
+    console.log($(rooms[0]).is(":checked")) 
     rooms.each(function( index ) {
       var room= rooms[index]
       if($(room).is(":checked")){

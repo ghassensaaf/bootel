@@ -99,6 +99,10 @@
     for (var i =5; i>hotel.rating;  i-- ) { 
         rating+=`<i style="color: #FF9529;" class="far fa-star"></i>`;
     }
+    if(hotel.marketingText.length==0)
+    {
+      hotel.marketingText="<br>"
+    }
     return `{{> hotel}}`;
   }
   function filtersPriceTemplate(filters){
