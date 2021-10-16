@@ -10,6 +10,8 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 var hotelsRouter = require('./routes/hotel');
 var checkoutRouter = require('./routes/checkout');
+var bookRouter = require('./routes/book');
+
 var hbs = require('hbs');
 var ejs = require('ejs');
 
@@ -76,6 +78,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/hotels', hotelsRouter);
 app.use('/checkout',checkoutRouter);
+app.use('/book',bookRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -35,7 +35,7 @@ module.exports = {
             "title"     :req.body.title,
             "firstname" :req.body.firstName,
             "lastname"  :req.body.lastName,
-            "email"     :req.body.email,
+            "email  "     :req.body.email,
             "mobile"    :req.body.mobile
         };
         //  [req.body.firstName, req.body.lastName];
@@ -58,8 +58,11 @@ module.exports = {
         try {
             const book = await checkoutModel.book(titles, firstnames, lastnames, ages, req.body.searchCode, req.body.pensionId, req.body.message, holder, req.body.rooms);
             const bookJSON = await book.json();
-            res.send(bookJSON);
+            console.log("hellooooooo");
+            console.log(bookJSON);
+            res.redirect('http://localhost:3000/book?etat='+bookJSON.status+'&bookId='+bookJSON.booking.bookingId);
         } catch (error) {
+            console.log("errooort");
             res.send(error);
         }        
     }
