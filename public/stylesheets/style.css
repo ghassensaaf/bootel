@@ -23,19 +23,12 @@ body
 /* ----------------------------------------------------------------------------- */
 /* ------------------------hotel cards--------------------------------------- */
 /* ----------------------------------------------------------------------------- */
-.hotel{
-  border-radius: 1.5rem;
-}
-.hotel-rooms{
-  border-radius: 1.5rem;
-}
+
 .hotel-rooms>.card-body{
   padding: 1rem 2rem;
 }
 .card-img{
   object-fit: cover; height:100%; max-height:348px;
-  border-top-left-radius: 1.5rem;
-  border-bottom-left-radius: 1.5rem;
 }
 .h-adress{
   color: #0b7b99;
@@ -209,9 +202,5 @@ button.loading{
   }
   .card-img{
     height: 250px;
-    border-top-left-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 }

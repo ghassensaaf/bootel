@@ -94,16 +94,10 @@ function showRooms(btn){
   
   if($(rooms).is(":hidden")){
     $('#'+btn.id).html('Chambre et Tarifs <i class="fas fa-chevron-up"></i>');
-    if($(document).width()>=992){
-      $(pic).css("border-bottom-left-radius", "0");
-    }
   }
   else
   {
     $('#'+btn.id).html('Chambre et Tarifs <i class="fas fa-chevron-down"></i>');
-    if($(document).width()>=992){
-    $(pic).css("border-bottom-left-radius", "1.5rem");
-    }
   }
   $(rooms).slideToggle();
 }
