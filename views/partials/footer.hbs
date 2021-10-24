@@ -53,12 +53,12 @@
           rateClass = `<p class="mb-1"><span class="badge rounded-pill bg-danger"><small>Non Remboursable</small></span></p>`
         }
         if(rate.availability === "R"){
-          availability=`<div style="position:absolute;top:0;right:0;" class="badge bg-warning">Sur Demande</div>`
+          availability=`<div style="position:absolute;top:0;right:0;" class="badge bg-warning rounded-0">Sur Demande</div>`
         }
         if(rate.availability === "A"){
-          availability=`<div style="position:absolute;top:0;right:0;" class="badge bg-primary">Disponible</div>`
+          availability=`<div style="position:absolute;top:0;right:0;" class="badge bg-primary rounded-0">Disponible</div>`
         }
-        rooms+=`<div style="position: relative;" class="row py-2 mt-3 border rounded shadow room-card room-${hotel.hotelId} align-items-center"  data-group="${rate.boardCode}">
+        rooms+=`<div style="position: relative;" class="row py-2 mt-3 border room-card room-${hotel.hotelId} align-items-center"  data-group="${rate.boardCode}">
                   <div class="col-lg-4 col-md-12" style="border-right:1px dashed #33333350">
                     <h6>${rate.rooms}x ${room.name}</h6>
                     <h6>${rate.boardName}</h6>

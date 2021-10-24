@@ -11,7 +11,7 @@ module.exports={
         });
     },
     book: function(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder, rooms){
-        api_book_url = 'http://api-test.boosterbc.com/rest/hotels-v3/book';
+        api_book_url = 'https://api-test.boosterbc.com/rest/hotels-v3/book';
         body = createBooking(titles, firstnames, lastnames, ages, searchCode, pensionId, remark, holder,rooms);
         return fetch(api_book_url, {
             method: 'POST',

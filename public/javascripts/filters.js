@@ -132,7 +132,7 @@ function selectRoom(){
       total+=parseFloat(selectedRooms[index].getAttribute("price"))
     });
     $('#total-'+hId).html(`Total : ${total} TND`)
-    $(parent).toggleClass("border-primary border-3");
+    $(parent).toggleClass("border-primary border-2");
   });
 }
 function reservationValidate(form){

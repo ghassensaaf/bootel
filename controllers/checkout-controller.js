@@ -60,7 +60,7 @@ module.exports = {
             const bookJSON = await book.json();
             console.log("hellooooooo");
             console.log(bookJSON);
-            res.redirect('http://localhost:3000/book?etat='+bookJSON.status+'&bookId='+bookJSON.booking.bookingId);
+            res.redirect('/book?status='+bookJSON.status+'&bookId='+bookJSON.booking.bookingId);
         } catch (error) {
             console.log("errooort");
             res.send(error);

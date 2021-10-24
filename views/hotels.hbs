@@ -6,7 +6,7 @@
   </div>
   <!-- Section: Search engine -->
   <div class="row mt-5">
-    <div class="col-lg-3 mb-4">
+    <div class="col-lg-4 mb-3" style="width : 29.166666655%">
       <!-- Section: Sidebar -->
       <section id="sidebar" class="mb-3 " >
         <!-- Section: Filters -->
@@ -15,11 +15,11 @@
         </button>
         <div id="example-collapse" class="collapse d-lg-block">
         <section class="" id="filters" >
-          <section id=" search-summary" class="mb-4 bg-white p-3">
+          <section id=" search-summary" class="mb-4 bg-white p-2 border">
             <div class="row">
               <div class="col-8">
-                <h6 class="font-weight-bold mb-3 text-primary">Hammamet,tunisie</h6>
-                <p><small>21/10/2021 - 22/10/2021 <br> 1 chambre, 2 adultes</small></p>
+                <h6 class="font-weight-bold mb-2 text-primary">Hammamet,tunisie</h6>
+                <p class="mb-2"><small>21/10/2021 - 22/10/2021 <br> 1 chambre, 2 adultes</small></p>
               </div>
               <div class="col-4 position-relative">
                 <h1 class="position-absolute top-50 start-50 translate-middle"><i class="fas fa-search"></i></h1>
@@ -27,13 +27,13 @@
             </div>
           </section>
           <!-- Section: Price  -->
-          <section id="price-filter" class="mb-4 bg-white p-3">
+          <section id="price-filter" class="mb-4 bg-white p-3 border">
             <h6 class="font-weight-bold ">Filtrer par budget</h6>
             <h6 class="loading w-75"></h6>
           </section>
           <!-- Section: Price  -->
           <!-- Section: rating -->
-          <section class="mb-4 bg-white p-3">
+          <section class="mb-4 bg-white p-3 border">
             <h6 class="font-weight-bold mb-3">Filtrer par nombre d'étoile</h6>
             <div id="rating-filter">
               <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
@@ -45,7 +45,7 @@
           </section>
           <!-- Section: rating -->
           <!-- Section: Boards -->
-          <section class="mb-4 bg-white p-3">
+          <section class="mb-4 bg-white p-3 border">
             <h6 class="font-weight-bold mb-3">Type de pension</h6>
             <div id="board-filter">
               <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
@@ -57,7 +57,7 @@
           </section>
           <!-- Section: Boards -->
           <!-- Section: Themes -->
-          <section class="mb-4 bg-white p-3">
+          <section class="mb-4 bg-white p-3 border">
             <h6 class="font-weight-bold mb-3">Themes</h6>
             <div id="theme-filter">
               <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
@@ -74,7 +74,7 @@
       </section>
       <!-- Section: Sidebar -->
     </div>
-    <div class="col-lg-9 mb-4 px-0">
+    <div class="col-lg mb-4 px-0">
       <!-- Section: Products  -->
       <section class="mb-3">
         <!-- Sorting -->
@@ -82,7 +82,7 @@
           <div class="container">
             <div class="row d-flex ">
               <div class="col-md-4 col-sm-12 ">
-                <span class="" id="resultCount"><p class="loading w-75"></p></span>
+                
               </div>
               <div class="col-md-4 col-sm-12 offset-md-4">
                 <div class="d-flex flex-wrap">
@@ -107,16 +107,16 @@
         <!-- hotels -->
         <section>
           <!-- Grid row -->
-          <div class="bg-white mx-2 row">
+          <div class="bg-white mx-2 row border p-2">
             <div class="col-2 position-relative">
               <h1 class="position-absolute top-50 start-50 translate-middle"> <i class="far fa-calendar"></i></h1>
             </div>
-            <div class="col-10 py-2">
-              <h6>48 Hotels à Hammamet</h6>
-              <p> <small>aux dates sélectionnées <br><span class="text-warning">vite! Il ne reste que quelques disponibilité</span> </small> </p>
+            <div class="col-10">
+              <h6 class="mb-2" id="resultCount"><p class="loading w-25 mb-2"></p></h6>
+              <p class="mb-2"> <small>aux dates sélectionnées <br><span class="text-warning">vite! Il ne reste que quelques disponibilité</span> </small> </p>
             </div>
           </div>
-          <div class="bg-white mx-2 row mt-2 py-2 d-flex align-items-center">
+          <div class="bg-white mx-2 row mt-2 py-2 d-flex align-items-center border">
             <div class="col-2"><h6>Trier par: </h6></div>
             <div class="col-2"><h6 class="text-center">Hotels recommendés</h6> </div>
             <div class="col-2"><h6 class="text-center">Prix</h6> </div>
@@ -125,12 +125,12 @@
             <div class="col-2"> </div>
           </div>
           <div class="px-2" id="products"> 
-            <div class="card mt-3 shadow-sm hotel" >
+            <div class="card mt-3 hotel" >
               <div class="row no-gutters">
-                  <div class="col-md-12 col-lg-4">
-                    <figure class="card-img loading"></figure>
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
                   </div>
-                  <div class="col-md-12 col-lg-8">
+                  <div class="col-md-12 col-lg-7">
                       <div class="card-body">
                           <h5 class="card-title loading w-25"></h5>
                           <h5 class="card-title loading w-50"></h5>
@@ -151,12 +151,12 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 shadow-sm hotel" >
+            <div class="card mt-3 hotel" >
               <div class="row no-gutters">
-                  <div class="col-md-12 col-lg-4">
-                    <figure class="card-img loading"></figure>
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
                   </div>
-                  <div class="col-md-12 col-lg-8">
+                  <div class="col-md-12 col-lg-7">
                       <div class="card-body">
                           <h5 class="card-title loading w-25"></h5>
                           <h5 class="card-title loading w-50"></h5>
@@ -177,12 +177,12 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 shadow-sm hotel" >
+            <div class="card mt-3 hotel" >
               <div class="row no-gutters">
-                  <div class="col-md-12 col-lg-4">
-                    <figure class="card-img loading"></figure>
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
                   </div>
-                  <div class="col-md-12 col-lg-8">
+                  <div class="col-md-12 col-lg-7">
                       <div class="card-body">
                           <h5 class="card-title loading w-25"></h5>
                           <h5 class="card-title loading w-50"></h5>
@@ -203,12 +203,12 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 shadow-sm hotel" >
+            <div class="card mt-3 hotel" >
               <div class="row no-gutters">
-                  <div class="col-md-12 col-lg-4">
-                    <figure class="card-img loading"></figure>
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
                   </div>
-                  <div class="col-md-12 col-lg-8">
+                  <div class="col-md-12 col-lg-7">
                       <div class="card-body">
                           <h5 class="card-title loading w-25"></h5>
                           <h5 class="card-title loading w-50"></h5>
@@ -229,12 +229,12 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 shadow-sm hotel" >
+            <div class="card mt-3 hotel" >
               <div class="row no-gutters">
-                  <div class="col-md-12 col-lg-4">
-                    <figure class="card-img loading"></figure>
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
                   </div>
-                  <div class="col-md-12 col-lg-8">
+                  <div class="col-md-12 col-lg-7">
                       <div class="card-body">
                           <h5 class="card-title loading w-25"></h5>
                           <h5 class="card-title loading w-50"></h5>
@@ -255,12 +255,12 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 shadow-sm hotel" >
+            <div class="card mt-3 hotel" >
               <div class="row no-gutters">
-                  <div class="col-md-12 col-lg-4">
-                    <figure class="card-img loading"></figure>
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
                   </div>
-                  <div class="col-md-12 col-lg-8">
+                  <div class="col-md-12 col-lg-7">
                       <div class="card-body">
                           <h5 class="card-title loading w-25"></h5>
                           <h5 class="card-title loading w-50"></h5>

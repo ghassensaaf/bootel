@@ -1,9 +1,9 @@
-<div class="card mt-3 shadow-sm hotel" >
+<div class="card mt-3 hotel" >
     <div class="row no-gutters">
-        <div class="col-md-12 col-lg-4">
+        <div class="col-md-12 col-lg-5">
             <img id="${hotel.hotelId}-pic" data-src="${hotel.photos[0]}" class="card-img lazy" alt="...">
         </div>
-        <div class="col-md-12 col-lg-8" >
+        <div class="col-md-12 col-lg-7" >
             <div class="card-body h-100 p-3 pb-0" style="position: relative;">
                 <h4 class="h-rating mb-3">${rating}</h4>
                 <h5 class="card-title">${hotel.name}</h5>
@@ -17,7 +17,6 @@
                     <button class="btn btn-primary showRooms-btn col" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Chambre et Tarifs <i class="fas fa-chevron-down"></i></button>
                 </div>
             </div>
-            
         </div>
     </div>
     <div id="${hotel.hotelId}-hotelRooms" class="container p-4 " style="display: none;" >
@@ -41,9 +40,9 @@
                     <input type="hidden" name="csrf" value="{{token}}">
                     <input type="hidden" name="searchCode" value="${searchCode}">
                     <div class="container p-0">
-                        <div class="row p-2 mt-5  room-card room-${hotel.hotelId} align-items-center justify-content-between">
-                            <h5 class="col-4 mt-auto mb-auto" id="total-${hotel.hotelId}">Total : 00.00 TND</h5>
-                            <button id="resa-${hotel.hotelId}" class="btn btn-outline-primary col-4" type="submit">Reservez maintenant</button>
+                        <div class="row mt-5 border room-card room-${hotel.hotelId} align-items-center justify-content-between">
+                            <h5 class="col-4 offset-4 mt-auto mb-auto rtl" id="total-${hotel.hotelId}">Total : 00.00 TND</h5>
+                            <button id="resa-${hotel.hotelId}" class="btn btn-warning rounded-0 col-4 py-2 px-4" type="submit"><h5 class="text-white">Réservez</h5></button>
                         </div>
                     </div>
                 </form>
