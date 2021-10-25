@@ -160,6 +160,7 @@ function initializeSE() {
   if (typeof params.checkIn !== "undefined" && typeof params.checkOut !== "undefined" && typeof params.cityId !== "undefined") {
     $("#checkIn").val(params.checkIn);
     $("#checkOut").val(params.checkOut);
+    $("#city").val(params.city);
     start = params.checkIn.substr(5, 2) + "/" + params.checkIn.substr(8, 2) + "/" + params.checkIn.substr(0, 4);
     end = params.checkOut.substr(5, 2) + "/" + params.checkOut.substr(8, 2) + "/" + params.checkOut.substr(0, 4);
     $.get("/data/cities.json", (json) => {

@@ -1,9 +1,24 @@
 <div class="my-5 py-5"></div>
 <div class="container">
   <!-- Section: Search engine -->
-  <div class="container">
-    {{!-- {{>searchForm}} --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {{>searchForm}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="searchForm" class="btn btn-outline-primary">Search</button>
+        </div>
+      </div>
+    </div>
   </div>
+
   <!-- Section: Search engine -->
   <div class="row mt-5">
     <div class="col-lg-4 mb-3" style="width : 29.166666655%">
@@ -22,7 +37,11 @@
                 <p class="mb-2"><small>21/10/2021 - 22/10/2021 <br> 1 chambre, 2 adultes</small></p>
               </div>
               <div class="col-4 position-relative">
-                <h1 class="position-absolute top-50 start-50 translate-middle"><i class="fas fa-search"></i></h1>
+                <h1 class="position-absolute top-50 start-50 translate-middle">
+                  <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </h1>
               </div>
             </div>
           </section>
