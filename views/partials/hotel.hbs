@@ -13,7 +13,7 @@
                     <p class="card-text text-success">${hotel.marketingText}</p>
                 </div>
                 <div class="row">
-                    <h5 class="card-price col pt-3 ps-3 pb-4 mb-0" style="position:absolute;bottom : 0; left:0; background-color:#f2f7fd;">à partir de 99 TND</h5>
+                    <h5 class="card-price col pt-3 ps-3 pb-4 mb-0" style="position:absolute;bottom : 0; left:0; background-color:#f2f7fd;">à partir de ${hotel.minRate} ${hotel.currency}</h5>
                     <button class="btn btn-primary showRooms-btn col rounded-0 p-3" style="position:absolute;bottom : 0; right:0; width :50%;" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Chambre et Tarifs <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
                 </div>
             </div>
