@@ -11,6 +11,10 @@ function filter(searchCode,total)
   }
   $('.update').on('change', '', function() {
     currentPage=1;
+    $('input[name=sort]:checked').parent().addClass( "border-bottom border-2 border-warning" );
+    $('input[name=sort]:not(:checked)').parent().removeClass( "border-bottom border-2 border-warning" );
+    $('input[name=order-dir]:checked').parent().addClass( "border-bottom border-2 border-warning" );
+    $('input[name=order-dir]:not(:checked)').parent().removeClass( "border-bottom border-2 border-warning" );
     var data3 = {};
     $.ajax({
       type:'GET',
@@ -102,7 +106,7 @@ function showRooms(btn){
   $(rooms).slideToggle();
 }
 function getCurrentFilters(currentPage, sliderValue, searchCode){
-  var sort = $("#sort-select option:selected").val();
+  var sort = $('input[name=sort]:checked').val()+':'+$('input[name=order-dir]:checked').val()
   var rating = [];
   var board = [];
   var theme = [];
