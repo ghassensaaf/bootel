@@ -156,13 +156,25 @@ function initializeSE() {
     }
   });
   // initialize checkin/checkout dates
-  var params = parseQueryString();
+  params = parseQueryString();
   if (typeof params.checkIn !== "undefined" && typeof params.checkOut !== "undefined" && typeof params.cityId !== "undefined") {
+    $("#dateRange").daterangepicker(
+      {
+        locale: {
+          format: 'DD/MM/YYYY'
+        }
+      }
+    );
     $("#checkIn").val(params.checkIn);
     $("#checkOut").val(params.checkOut);
     $("#city").val(params.city);
-    start = params.checkIn.substr(5, 2) + "/" + params.checkIn.substr(8, 2) + "/" + params.checkIn.substr(0, 4);
-    end = params.checkOut.substr(5, 2) + "/" + params.checkOut.substr(8, 2) + "/" + params.checkOut.substr(0, 4);
+    start = params.checkIn.substr(8, 2) + "/" + params.checkIn.substr(5, 2) + "/" + params.checkIn.substr(0, 4);
+    end = params.checkOut.substr(8, 2) + "/" + params.checkOut.substr(5, 2) + "/" + params.checkOut.substr(0, 4);
+    diffTime = Math.abs(new Date(params.checkOut) - new Date(params.checkIn));
+    diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    $("#start-date").html(start);
+    $("#end-date").html(end);
+
     $.get("/data/cities.json", (json) => {
       $.each(json, function (index, obj) {
         if (obj.id == params.cityId) {
@@ -174,6 +186,7 @@ function initializeSE() {
       renderFilters([]);
     });
   } else {
+    
     today = new Date();
     trw = new Date();
     trw.setDate(today.getDate() + 1);
@@ -187,11 +200,14 @@ function initializeSE() {
     trw = yyyyt + "-" + mmt + "-" + ddt;
     $("#checkIn").val(today);
     $("#checkOut").val(trw);
-    start = mm + "/" + dd + "/" + yyyy;
-    end = mmt + "/" + ddt + "/" + yyyyt;
+    start = dd + "/" + mm + "/" + yyyy;
+    end = ddt + "/" + mmt + "/" + yyyyt;
   }
   $("#dateRange").daterangepicker(
     {
+      locale: {
+        format: 'DD/MM/YYYY'
+    },
       startDate: start,
       endDate: end,
       minDate: new Date()

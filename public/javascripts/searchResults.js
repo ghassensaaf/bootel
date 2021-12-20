@@ -56,11 +56,13 @@ function getHotels() {
       selectRoom();
       $('#resultCount').html(total + ' Hotels à '+json.hotels[0].city);
       filterUrl='hotels/api/Filter/'+searchCode;
+      $(".nights-count").html(diffDays)
       $.get(
         filterUrl,
         (json) => {
           renderFilters(json);
           filter(searchCode,total);
+          $(".nights-count").html(diffDays)
         }
       )
       .fail(() => {

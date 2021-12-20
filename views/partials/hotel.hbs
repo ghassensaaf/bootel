@@ -1,20 +1,20 @@
-<div class="card mt-3 hotel" >
-    <div class="row no-gutters">
-        <div class="col-md-12 col-lg-5 pe-0">
+<div class="card mt-2 hotel" >
+    <div class="row" style=" display:flex;">
+        <div class="col-md-12 col-lg-5">
             <img id="${hotel.hotelId}-pic" data-src="${hotel.photos[0]}" class="card-img rounded-0 lazy" alt="...">
         </div>
-        <div class="col-md-12 col-lg-7 ps-0" >
-            <div class="card-body h-100 p-3 pb-0" style="position: relative;">
-                <h4 class="h-rating mb-3">${rating}</h4>
-                <h5 class="card-title">${hotel.name}</h5>
-                <p class="h-adress"><i class="fas fa-map-marker-alt"></i> ${hotel.address}</p>
-                <hr>
-                <div class="mb-1">
-                    <p class="card-text text-success">${hotel.marketingText}</p>
+        <div class="col-md-12 col-lg-7"  >
+            <div class="card-body h-100 p-0" style="display:flex; flex-direction:column; overflow:hidden ">
+                <p class="card-title fs-4 mt-3 ps-3">${hotel.name} <span class="fs-6" >${rating}</span> </p>
+                <h4 class="h-rating mb-3"></h4>
+                <p class="h-adress text-muted ps-3"><i class="fas fa-map-marker-alt"></i> <small class="text-muted"> ${hotel.address} </small></p>
+                <div class="mb-1 ps-3">
+                    <p class="card-text"> <i class="fas fa-tags"></i> ${hotel.marketingText}</p>
+                    <p class="card-themes "><small><i class="fas fa-spa"></i> SPA   &nbsp;<i class="fas fa-parking"></i> Parking   &nbsp;<i class="fas fa-wifi"></i> WIFI</small></p>
                 </div>
-                <div class="row">
-                    <h5 class="card-price col pt-3 ps-3 pb-4 mb-0" style="position:absolute;bottom : 0; left:0; background-color:#f2f7fd;">à partir de ${hotel.minRate} ${hotel.currency}</h5>
-                    <button class="btn btn-primary showRooms-btn col rounded-0 p-3" style="position:absolute;bottom : 0; right:0; width :50%;" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Chambre et Tarifs <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+                <div class="row ps-3" style=" margin-top:auto;">
+                    <h5 class="card-price col pt-3 ps-3 pb-4 mb-0" style="color:#009bc4;">à partir de ${hotel.minRate} ${hotel.currency}</h5>
+                    <button class="btn btn-primary showRooms-btn col rounded-0 p-3" style=" width :50%;" id="${hotel.hotelId}-showB" onclick="showRooms(this)">Chambre et Tarifs <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
                 </div>
             </div>
         </div>

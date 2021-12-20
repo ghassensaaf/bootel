@@ -27,6 +27,7 @@ function filter(searchCode,total)
         renderHotels(json.hotels,json.searchCode);
         filterRooms();
         selectRoom();
+        $(".nights-count").html(diffDays)
         $('#resultCount').html(json.total + ' Hotels à '+json.hotels[0].city);
         pages=Math.ceil(json.total/10);
         if(currentPage>=pages){
@@ -59,6 +60,7 @@ function filter(searchCode,total)
         showMoreHotels(json.hotels,json.searchCode);
         filterRooms();
         selectRoom();
+        $(".nights-count").html(diffDays)
         $('#show-more').prop('disabled', false);
       },
       error:function(){

@@ -30,11 +30,11 @@
         </button>
         <div id="example-collapse" class="collapse d-lg-block">
         <section class="" id="filters" >
-          <section id=" search-summary" class="mb-4 bg-white p-2 border">
+          <section id=" search-summary" class="mb-2 bg-white p-3 border">
             <div class="row">
               <div class="col-8">
                 <h6 class="font-weight-bold mb-2 text-primary">Hammamet,tunisie</h6>
-                <p class="mb-2"><small>21/10/2021 - 22/10/2021 <br> 1 chambre, 2 adultes</small></p>
+                <p class="mb-2"><small><span id="start-date"></span> - <span id="end-date"></span> <br> 1 chambre, 2 adultes</small></p>
               </div>
               <div class="col-4 position-relative">
                 <h1 class="position-absolute top-50 start-50 translate-middle">
@@ -46,13 +46,13 @@
             </div>
           </section>
           <!-- Section: Price  -->
-          <section id="price-filter" class="mb-4 bg-white p-3 border">
+          <section id="price-filter" class="mb-2 bg-white p-3 border">
             <h6 class="font-weight-bold ">Filtrer par budget</h6>
             <h6 class="loading w-75"></h6>
           </section>
           <!-- Section: Price  -->
           <!-- Section: rating -->
-          <section class="mb-4 bg-white p-3 border">
+          <section class="mb-2 bg-white p-3 border">
             <h6 class="font-weight-bold mb-3">Filtrer par nombre d'étoile</h6>
             <div id="rating-filter">
               <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
@@ -64,7 +64,7 @@
           </section>
           <!-- Section: rating -->
           <!-- Section: Boards -->
-          <section class="mb-4 bg-white p-3 border">
+          <section class="mb-2 bg-white p-3 border">
             <h6 class="font-weight-bold mb-3">Type de pension</h6>
             <div id="board-filter">
               <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
@@ -76,7 +76,7 @@
           </section>
           <!-- Section: Boards -->
           <!-- Section: Themes -->
-          <section class="mb-4 bg-white p-3 border">
+          <section class="mb-2 bg-white p-3 border">
             <h6 class="font-weight-bold mb-3">Themes</h6>
             <div id="theme-filter">
               <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
@@ -93,9 +93,9 @@
       </section>
       <!-- Section: Sidebar -->
     </div>
-    <div class="col-lg mb-4 px-0">
+    <div class="col-lg mb-2 px-0">
       <!-- Section: Products  -->
-      <section class="mb-3">
+      
         <!-- Sorting -->
         {{!-- <section class="mb-3">
           <div class="container">
@@ -124,9 +124,9 @@
         </section> --}}
         <!-- Sorting -->
         <!-- hotels -->
-        <section>
+        
           <!-- Grid row -->
-          <div class="bg-white mx-2 row border p-2">
+          <div class="bg-white mx-2 row border p-3">
             <div class="col-2 position-relative">
               <h1 class="position-absolute top-50 start-50 translate-middle"> <i class="far fa-calendar"></i></h1>
             </div>
@@ -167,7 +167,7 @@
             </div>
           </div>
           <div class="px-2" id="products"> 
-            <div class="card mt-3 hotel" >
+            <div class="card mt-2 hotel" >
               <div class="row no-gutters">
                   <div class="col-md-12 col-lg-5">
                     <figure class="card-img loading mb-0"></figure>
@@ -193,7 +193,7 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 hotel" >
+            <div class="card mt-2 hotel" >
               <div class="row no-gutters">
                   <div class="col-md-12 col-lg-5">
                     <figure class="card-img loading mb-0"></figure>
@@ -219,7 +219,7 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 hotel" >
+            <div class="card mt-2 hotel" >
               <div class="row no-gutters">
                   <div class="col-md-12 col-lg-5">
                     <figure class="card-img loading mb-0"></figure>
@@ -245,7 +245,7 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 hotel" >
+            <div class="card mt-2 hotel" >
               <div class="row no-gutters">
                   <div class="col-md-12 col-lg-5">
                     <figure class="card-img loading mb-0"></figure>
@@ -271,7 +271,7 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 hotel" >
+            <div class="card mt-2 hotel" >
               <div class="row no-gutters">
                   <div class="col-md-12 col-lg-5">
                     <figure class="card-img loading mb-0"></figure>
@@ -297,7 +297,7 @@
                   </div>
               </div>
             </div> 
-            <div class="card mt-3 hotel" >
+            <div class="card mt-2 hotel" >
               <div class="row no-gutters">
                   <div class="col-md-12 col-lg-5">
                     <figure class="card-img loading mb-0"></figure>
@@ -324,8 +324,8 @@
               </div>
             </div> 
           </div>
-          <div class="justify-content-center row mt-3">
-            <div class="col-2">
+          <div class="mt-2">
+            <div class="">
               <button class="btn btn-outline-info mx-auto form-control" id="show-more">Show More</button>
             </div>
           </div>
