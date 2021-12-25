@@ -4,30 +4,45 @@
     "minRate" : 100,
     "maxRate" : 1000,
     "stops" : [
-        0,
-        1,
-        2,
-        3
+        {
+            "nbr" : 0,
+            "count": 7
+        },
+        {
+            "nbr" : 1,
+            "count": 3
+        },
+        {
+            "nbr" : 0,
+            "count": 2
+        },
+        {
+            "nbr" : 0,
+            "count": 12
+        }
     ],
     "airlines" : [
         {
             "airlineId" : 0,
             "airlineCode" : "TA",
             "airlineName" : "Turkish Airline",
-            "airlineLogo" : "linktologo.png"
+            "airlineLogo" : "linktologo.png",
+            "count" : 11
         },
         {
             "airlineId" : 1,
             "airlineCode" : "TUA",
             "airlineName" : "Tunisair",
-            "airlineLogo" : "linktologo.png"
+            "airlineLogo" : "linktologo.png",
+            "count" : 37
         }
     ],
     "airports" : [
         {
             "airportId" : 1,
             "IATA" : "TUN ",
-            "name" : "Tunis Carthage"
+            "name" : "Tunis Carthage",
+            "count" : 55
         }
     ],
     "departureTime" : {
