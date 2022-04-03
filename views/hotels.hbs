@@ -1,0 +1,338 @@
+<div class="my-5 py-5"></div>
+<div class="container">
+  <!-- Section: Search engine -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {{>searchForm}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="searchForm" class="btn btn-outline-primary">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Search engine -->
+  <div class="row mt-5">
+    <div class="col-lg-4 mb-3" style="width : 29.166666655%">
+      <!-- Section: Sidebar -->
+      <section id="sidebar" class="mb-3 " >
+        <!-- Section: Filters -->
+        <button class="btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#example-collapse">
+            <span class="navbar-light fs-2">Show Filters <span class="navbar-toggler-icon px-3"></span></span>
+        </button>
+        <div id="example-collapse" class="collapse d-lg-block">
+        <section class="" id="filters" >
+          <section id=" search-summary" class="mb-2 bg-white p-3 border">
+            <div class="row">
+              <div class="col-8">
+                <h6 class="font-weight-bold mb-2 text-primary">Hammamet,tunisie</h6>
+                <p class="mb-2"><small><span id="start-date"></span> - <span id="end-date"></span> <br> 1 chambre, 2 adultes</small></p>
+              </div>
+              <div class="col-4 position-relative">
+                <h1 class="position-absolute top-50 start-50 translate-middle">
+                  <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </h1>
+              </div>
+            </div>
+          </section>
+          <!-- Section: Price  -->
+          <section id="price-filter" class="mb-2 bg-white p-3 border">
+            <h6 class="font-weight-bold ">Filtrer par budget</h6>
+            <h6 class="loading w-75"></h6>
+          </section>
+          <!-- Section: Price  -->
+          <!-- Section: rating -->
+          <section class="mb-2 bg-white p-3 border">
+            <h6 class="font-weight-bold mb-3">Filtrer par nombre d'étoile</h6>
+            <div id="rating-filter">
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            </div>
+          </section>
+          <!-- Section: rating -->
+          <!-- Section: Boards -->
+          <section class="mb-2 bg-white p-3 border">
+            <h6 class="font-weight-bold mb-3">Type de pension</h6>
+            <div id="board-filter">
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            </div>
+          </section>
+          <!-- Section: Boards -->
+          <!-- Section: Themes -->
+          <section class="mb-2 bg-white p-3 border">
+            <h6 class="font-weight-bold mb-3">Themes</h6>
+            <div id="theme-filter">
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-50"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+              <input type="checkbox" class="form-check-input filled-in" disabled> <h6 style="display: inline-block;" class="loading w-75"></h6><br>
+            </div>
+          </section>
+          <!-- Section: Themes -->
+        </section>
+        </div>
+        <!-- Section: Filters -->
+      </section>
+      <!-- Section: Sidebar -->
+    </div>
+    <div class="col-lg mb-2 px-0">
+      <!-- Section: Products  -->
+      
+        <!-- Sorting -->
+        {{!-- <section class="mb-3">
+          <div class="container">
+            <div class="row d-flex ">
+              <div class="col-md-4 col-sm-12 ">
+                
+              </div>
+              <div class="col-md-4 col-sm-12 offset-md-4">
+                <div class="d-flex flex-wrap">
+                  <div class="select-outline position-relative w-100">
+                    <select id="sort-select" class="mdb-select md-form md-outline form-select update border-dark">
+                      <option value="x">Sort</option>
+                      <option value="score:asc">Hotels recommendés</option>
+                      <option value="price:asc">moin cher au plus cher</option>
+                      <option value="price:desc">plus cher au moins cher</option>
+                      <option value="name:asc">Nom hotel(A à Z)</option>
+                      <option value="name:desc">Nom hotel(Z à A)</option>
+                      <option value="rating:asc">Nombre d'étoiles(bas en haut)</option>
+                      <option value="rating:desc">Nombre d'étoiles(haut en bas)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> --}}
+        <!-- Sorting -->
+        <!-- hotels -->
+        
+          <!-- Grid row -->
+          <div class="bg-white mx-2 row border p-3">
+            <div class="col-2 position-relative">
+              <h1 class="position-absolute top-50 start-50 translate-middle"> <i class="far fa-calendar"></i></h1>
+            </div>
+            <div class="col-10">
+              <h6 class="mb-2" id="resultCount"><p class="loading w-25 mb-2"></p></h6>
+              <p class="mb-2"> <small>aux dates sélectionnées <br><span class="text-warning">vite! Il ne reste que quelques disponibilité</span> </small> </p>
+            </div>
+          </div>
+          <div class="bg-white mx-2 row mt-2 py-2 align-items-center border update d-flex align-items-stretch ">
+            <div class="col-2 d-flex align-items-center justify-content-center me-1">
+              <h6>Trier par: </h6>
+              </div>
+            <div class="col-2 d-flex align-items-center justify-content-center me-1" >
+              <input type="radio" name="sort" id="score-rd" value="score" hidden>
+              <h6 class="text-center"><label style="cursor: pointer;" for="score-rd">Hotels recommendés</label></h6>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center me-1" >
+              <input type="radio" name="sort" id="price-rd" value="price" hidden>
+              <h6 class="text-center"><label style="cursor: pointer;" for="price-rd">Prix</label></h6>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center me-1" >
+              <input type="radio" name="sort" id="name-rd" value="name" hidden>
+              <h6 class="text-center"><label style="cursor: pointer;" for="name-rd">Nom d'hotel</label></h6>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center me-1" >
+              <input type="radio" name="sort" id="rating-rd" value="rating" hidden>
+              <h6 class="text-center"><label style="cursor: pointer;" for="rating-rd">Nombre d'étoiles</label></h6>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-center align-items-stretch row">
+              <div class="col-2 d-flex align-items-center justify-content-center border-bottom border-2 border-warning">
+                <h6 class="text-center"><label for="dir-asc" style="cursor: pointer;"><i class="fas fa-long-arrow-alt-up"></i></label></h6>
+                <input type="radio" name="order-dir" id="dir-asc" value="asc" checked hidden>
+              </div>
+              <div class="col-2 d-flex align-items-center justify-content-center">
+                <h6 class="text-center"><label for="dir-desc" style="cursor: pointer;"><i class="fas fa-long-arrow-alt-down"></i></label></h6>
+                <input type="radio" name="order-dir" id="dir-desc" value="desc" hidden>
+              </div>
+            </div>
+          </div>
+          <div class="px-2" id="products"> 
+            <div class="card mt-2 hotel" >
+              <div class="row no-gutters">
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
+                  </div>
+                  <div class="col-md-12 col-lg-7">
+                      <div class="card-body">
+                          <h5 class="card-title loading w-25"></h5>
+                          <h5 class="card-title loading w-50"></h5>
+                          <p class="h-rating loading w-75 mb-2"></p>
+                          <hr>
+                          <p class="h-rating loading w-100 mb-5"></p>
+                          <div class="row mb-2">
+                              <div class="col-lg-6 col-md-7 col-sm-12">
+                                  <h5 class="card-text text-success loading w-50 mb-2"></h5>
+                              </div>
+                              <div class="col-lg-6 col-md-5 col-sm-12">
+                                  <div class="card-text">
+                                      <h5 class="card-price loading w-100"></h5>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div> 
+            <div class="card mt-2 hotel" >
+              <div class="row no-gutters">
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
+                  </div>
+                  <div class="col-md-12 col-lg-7">
+                      <div class="card-body">
+                          <h5 class="card-title loading w-25"></h5>
+                          <h5 class="card-title loading w-50"></h5>
+                          <p class="h-rating loading w-75 mb-2"></p>
+                          <hr>
+                          <p class="h-rating loading w-100 mb-5"></p>
+                          <div class="row mb-2">
+                              <div class="col-lg-6 col-md-7 col-sm-12">
+                                  <h5 class="card-text text-success loading w-50 mb-2"></h5>
+                              </div>
+                              <div class="col-lg-6 col-md-5 col-sm-12">
+                                  <div class="card-text">
+                                      <h5 class="card-price loading w-100"></h5>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div> 
+            <div class="card mt-2 hotel" >
+              <div class="row no-gutters">
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
+                  </div>
+                  <div class="col-md-12 col-lg-7">
+                      <div class="card-body">
+                          <h5 class="card-title loading w-25"></h5>
+                          <h5 class="card-title loading w-50"></h5>
+                          <p class="h-rating loading w-75 mb-2"></p>
+                          <hr>
+                          <p class="h-rating loading w-100 mb-5"></p>
+                          <div class="row mb-2">
+                              <div class="col-lg-6 col-md-7 col-sm-12">
+                                  <h5 class="card-text text-success loading w-50 mb-2"></h5>
+                              </div>
+                              <div class="col-lg-6 col-md-5 col-sm-12">
+                                  <div class="card-text">
+                                      <h5 class="card-price loading w-100"></h5>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div> 
+            <div class="card mt-2 hotel" >
+              <div class="row no-gutters">
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
+                  </div>
+                  <div class="col-md-12 col-lg-7">
+                      <div class="card-body">
+                          <h5 class="card-title loading w-25"></h5>
+                          <h5 class="card-title loading w-50"></h5>
+                          <p class="h-rating loading w-75 mb-2"></p>
+                          <hr>
+                          <p class="h-rating loading w-100 mb-5"></p>
+                          <div class="row mb-2">
+                              <div class="col-lg-6 col-md-7 col-sm-12">
+                                  <h5 class="card-text text-success loading w-50 mb-2"></h5>
+                              </div>
+                              <div class="col-lg-6 col-md-5 col-sm-12">
+                                  <div class="card-text">
+                                      <h5 class="card-price loading w-100"></h5>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div> 
+            <div class="card mt-2 hotel" >
+              <div class="row no-gutters">
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
+                  </div>
+                  <div class="col-md-12 col-lg-7">
+                      <div class="card-body">
+                          <h5 class="card-title loading w-25"></h5>
+                          <h5 class="card-title loading w-50"></h5>
+                          <p class="h-rating loading w-75 mb-2"></p>
+                          <hr>
+                          <p class="h-rating loading w-100 mb-5"></p>
+                          <div class="row mb-2">
+                              <div class="col-lg-6 col-md-7 col-sm-12">
+                                  <h5 class="card-text text-success loading w-50 mb-2"></h5>
+                              </div>
+                              <div class="col-lg-6 col-md-5 col-sm-12">
+                                  <div class="card-text">
+                                      <h5 class="card-price loading w-100"></h5>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div> 
+            <div class="card mt-2 hotel" >
+              <div class="row no-gutters">
+                  <div class="col-md-12 col-lg-5">
+                    <figure class="card-img loading mb-0"></figure>
+                  </div>
+                  <div class="col-md-12 col-lg-7">
+                      <div class="card-body">
+                          <h5 class="card-title loading w-25"></h5>
+                          <h5 class="card-title loading w-50"></h5>
+                          <p class="h-rating loading w-75 mb-2"></p>
+                          <hr>
+                          <p class="h-rating loading w-100 mb-5"></p>
+                          <div class="row mb-2">
+                              <div class="col-lg-6 col-md-7 col-sm-12">
+                                  <h5 class="card-text text-success loading w-50 mb-2"></h5>
+                              </div>
+                              <div class="col-lg-6 col-md-5 col-sm-12">
+                                  <div class="card-text">
+                                      <h5 class="card-price loading w-100"></h5>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div> 
+          </div>
+          <div class="mt-2">
+            <div class="">
+              <button class="btn btn-outline-info mx-auto form-control" id="show-more">Show More</button>
+            </div>
+          </div>
+          <!-- Grid row -->
+        </section>
+      </section>
+      <!-- Section: Products  -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="my-5 py-5"></div>
+<div class="container">
+  <div class="mt-5">
+    <div>
+      <h4>Complétez votre réservation en moins de 2 minutes</h4 >
+      <div class="row my-3">
+        <div class="col d-flex justify-content-center ">
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-success text-light" style="width: 40px; height:40px">
+            <h6><i class="fas fa-check mt-2"></i></h6>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center ">
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-light border border-2 border-primary" style="width: 40px; height:40px">
+            <h6 class="mt-2">2</h6>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center ">
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-primary bg-opacity-50"  style="width: 40px; height:40px">
+            <h6 class="mt-2">3</h6>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center ">
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-primary bg-opacity-50"  style="width: 40px; height:40px">
+            <h6 class="mt-2">4</h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-center ">
+          <div class="d-flex my-auto justify-content-center" >
+            <h6 class="text-center">Choix des chambres</h6>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center ">
+          <div class="d-flex my-auto justify-content-center" >
+            <h6 class="text-center">Choix options / Données clients</h6>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center ">
+          <div class=" d-flex my-auto justify-content-center" >
+            <h6 class="text-center">Paiement </h6>
+          </div>
+        </div>
+        <div class="col d-flex justify-content-center ">
+          <div class=" d-flex my-auto justify-content-center" >
+            <h6 class="text-center">Finalisation </h6>
+          </div>
+        </div>
+      </div>
+      <div id="rates" class="row"></div>
+    </div>
+  </div>
+</div>
+<script>
+  function showRates(data) {
+    $('#rates').html(data);
+  }
+  $( document ).ready(function() {
+    $.ajax({
+      type: "POST",
+      url: 'checkout/checkRate',
+      success:function(json){ 
+        showRates(json);
+      },
+      error:function (request, error) {
+        console.log(arguments);
+      }
+    });
+  });
+</script>

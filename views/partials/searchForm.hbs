@@ -1,0 +1,63 @@
+<form action="/hotels" name="searchForm" id="searchForm" method="get">
+            <div class="form-row row ">
+                <div class="col-md-2 col-sm-8 offset-sm-2 offset-md-0 mb-2">
+                    <div id="multiple-datasets" class="input-group input-group-lg">
+                        <input id="typeaheadsearch" type="text" name="" class="form-control typeahead border-dark" placeholder="Villes & Hotels" required>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-8 offset-sm-2 offset-md-0 mb-2 ">
+                    <div class="input-group input-group-lg">
+                        <input id="dateRange" type="" name="" class="form-control border-dark text-center" value="" required>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-8 offset-sm-2 offset-md-0 mb-2">
+                    <div class="dropdown">
+                        <button class="travelers-btn white-btn btn btn-lg btn-outline-dark bg-white dropdown-toggle form-control" type="button" id="room-dropdown-btn" aria-expanded="false">
+                        </button>
+                        <div id="room-dropdown" class="dropdown-menu w-100" >
+                            <div class="alert alert-danger" role="alert"></div>
+                            <div id="sf-rooms">
+                                <div class="sf-room r1">
+                                    <h6>room 1</h6>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="adultes">adultes</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="adultes a-r1 form-control" type="number" id="adultesR1" value="2" max="6" min="1">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="childrenR1">children</label>
+                                            </div>
+                                            <div class="col children-input">
+                                                <input class="children ch-r1 form-control" type="number" name="" id="children-R1" value="0" max="3" min="0">
+                                            </div>
+                                        </div>
+                                        <div class="ch-r1-age row"></div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="row"> <span id="delRoom" class="col text-danger" style="display: none;"> <i class="fas fa-minus"></i> delete room </span></div>
+                            <div class="row"><span id="addRoom" class="col"><i class="fas fa-plus"></i> Add room </span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="hidden" name="cityId" id="cityId">
+                <input type="hidden" name="city" id="city">
+                <input type="hidden" name="hotelId" id="hotelId">
+                <input type="hidden" name="checkIn" id="checkIn">
+                <input type="hidden" name="checkOut" id="checkOut">
+                <input type="hidden" name="pax" id="pax">
+                
+                <div class="col-md-2 col-sm-6 offset-sm-3 offset-md-0 mb-2">
+                        <div >
+                            <button class="white-btn btn btn-lg btn-outline-dark bg-white form-control" type="submit">Search</button>
+                        </div>
+                </div>
+            </div>
+    </form>
